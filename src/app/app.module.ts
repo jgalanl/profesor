@@ -4,22 +4,28 @@ import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { environment } from '../environments/environment';
 
 //Firebase
 import { AngularFireModule } from '@angular/fire';
-import { environment } from '../environments/environment';
-import { AngularFireAuthModule} from '@angular/fire/auth';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { AngularFireAuthModule } from '@angular/fire/auth';
+import { AngularFirestoreModule } from '@angular/fire/firestore'
+
 
 //Angular material
 import {MatFormFieldModule} from '@angular/material/form-field'; 
 import {MatInputModule} from '@angular/material';
 import { LogInComponent } from './modules/log-in/log-in.component';
+import { HomeAlumnoComponent } from './modules/alumno/home-alumno/home-alumno.component';
+import { HomeProfesorComponent } from './modules/profesor/home-profesor/home-profesor.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LogInComponent,
+    HomeAlumnoComponent,
+    HomeProfesorComponent,
   ],
   imports: [
     BrowserModule,
@@ -28,7 +34,8 @@ import { LogInComponent } from './modules/log-in/log-in.component';
     AngularFireAuthModule,
     BrowserAnimationsModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    AngularFirestoreModule
   ],
   providers: [],
   bootstrap: [AppComponent]
