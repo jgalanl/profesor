@@ -16,6 +16,8 @@ import { AngularFirestoreModule } from '@angular/fire/firestore'
 //Angular material
 import {MatFormFieldModule} from '@angular/material/form-field'; 
 import {MatInputModule} from '@angular/material';
+import {MatMenuModule} from '@angular/material/menu'; 
+
 import { LogInComponent } from './modules/log-in/log-in.component';
 import { HomeAlumnoComponent } from './modules/alumno/home-alumno/home-alumno.component';
 import { HomeProfesorComponent } from './modules/profesor/home-profesor/home-profesor.component';
@@ -35,7 +37,8 @@ import { HomeProfesorComponent } from './modules/profesor/home-profesor/home-pro
     BrowserAnimationsModule,
     FormsModule,
     ReactiveFormsModule,
-    AngularFirestoreModule
+    AngularFirestoreModule,
+    MatMenuModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Asignatura } from 'src/app/data/asignatura';
+import { UsuariosService } from 'src/app/services/usuarios.service';
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-home-alumno',
@@ -7,9 +10,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomeAlumnoComponent implements OnInit {
 
-  constructor() { }
+  private asignaturas: Array<Asignatura> = []
+
+  constructor(private location: Location, private us: UsuariosService) { }
 
   ngOnInit() {
+    //Servicio que cargue las asignaturas del usurio
+    console.log(this.location.getState());
+    this.us.getAsignaturaByEmail("email")
   }
 
 }

@@ -3,8 +3,8 @@ import { Router } from '@angular/router';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { AuthService } from 'src/app/services/auth.service';
 import { UsuariosService } from 'src/app/services/usuarios.service';
-import { User } from 'firebase';
 import { Subscription } from 'rxjs';
+import { User } from 'src/app/data/user';
 
 @Component({
   selector: 'app-log-in',
@@ -33,11 +33,12 @@ export class LogInComponent implements OnInit {
     .then(res => {
       this.us.getUserByEmail(this.loginForm.get('email').value)
       .then(res => {
+        let email = this.loginForm.get('email')
         if(res.rol === 'profesor'){
           this.router.navigate(['/home-profesor']);
         }
         else{
-          this.router.navigate(['/home-alumno'])
+          this.router.navigate(['/home-alumno'], { state: { email: email } } )
         }
       })
     })
