@@ -1,9 +1,16 @@
-<form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+<main class="main-container">
+  <div class="formulario">
+    <img src="../../../assets/login.png">
+    <div class="formGroup">
+      <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
 
-    <input type="email" formControlName="email" placeholder = "email" >
-    <br/>
-    <input type="password" formControlName="password" placeholder = "password" >
+          <input type="email" formControlName="email" placeholder = "Correo" required>
+          <br/>
+          <input type="password" formControlName="password" placeholder = "Contraseña" required>
 
-  <button type="submit" [disabled]="!loginForm.valid">Entrar</button>
+        <button type="submit" [disabled]="!loginForm.valid">Iniciar sesión</button>
 
-</form>
+      </form>
+    </div>
+  </div>
+</main>

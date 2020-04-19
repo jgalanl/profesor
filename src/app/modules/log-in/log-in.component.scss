@@ -1,0 +1,47 @@
+.main-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 8%;
+}
+
+.formulario img {
+    height: auto;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 25%;
+}
+
+.formGroup {
+    display: flex;
+    justify-content: center;
+    margin-top: 2%;
+    padding-right: 20px;
+
+}
+
+.formGroup input {
+    color: white;
+    background-color: #54943c;
+    height: 50%;
+    border-radius: 10px;
+    box-sizing: border-box;
+    padding-left: 10px;
+}
+
+.formGroup button {
+    display: block;
+    margin: auto;
+    width: -moz-available;
+    height: 50%;
+    color: white;
+    background-color: #006600;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+.formGroup button[disabled]{
+    background-color: yellowgreen;
+    cursor: auto;
+}
+

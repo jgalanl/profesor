@@ -1,10 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { AuthService } from 'src/app/services/auth.service';
 import { UsuariosService } from 'src/app/services/usuarios.service';
 import { Subscription } from 'rxjs';
 import { User } from 'src/app/data/user';
+import { MatDialog } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-log-in',
@@ -18,10 +19,11 @@ export class LogInComponent implements OnInit {
 
   loginForm = new FormGroup({
     email: new FormControl('', [Validators.required, Validators.email]),
-    password: new FormControl('', Validators.required)
+    password: new FormControl('', [Validators.required, Validators.minLength(5)])
   })
 
-  constructor(private router: Router, private auth: AuthService, private us: UsuariosService) { 
+  constructor(private dialog: MatDialog, 
+    private router: Router, private auth: AuthService, private us: UsuariosService) { 
 
   }
 
@@ -38,12 +40,13 @@ export class LogInComponent implements OnInit {
           this.router.navigate(['/home-profesor']);
         }
         else{
-          this.router.navigate(['/home-alumno'], { state: { email: email } } )
+          this.router.navigate(['/home-alumno'] )
         }
       })
     })
     .catch(err => {
-      console.log(err)
+      //TODO. Incluir dialog
+      window.alert("Usuario o contraseña incorrectos")
     })
  }
 

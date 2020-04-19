@@ -16,6 +16,7 @@ import { AngularFirestoreModule } from '@angular/fire/firestore'
 import {MatFormFieldModule} from '@angular/material/form-field'; 
 import {MatInputModule} from '@angular/material';
 import {MatMenuModule} from '@angular/material/menu'; 
+import {MatDialogModule} from '@angular/material/dialog'; 
 
 import { LogInComponent } from './modules/log-in/log-in.component';
 import { HomeAlumnoComponent } from './modules/alumno/home-alumno/home-alumno.component';
@@ -39,7 +40,8 @@ import { SplashComponent } from './modules/splash/splash.component';
     FormsModule,
     ReactiveFormsModule,
     AngularFirestoreModule,
-    MatMenuModule
+    MatMenuModule,
+    MatDialogModule
   ],
   providers: [],
   bootstrap: [AppComponent]
