@@ -35,13 +35,12 @@ export class LogInComponent implements OnInit {
     .then(res => {
       this.us.getUserByEmail(this.loginForm.get('email').value)
       .then(res => {
-        let email = this.loginForm.get('email')
         if(res.rol === 'profesor'){
           this.router.navigate(['/home-profesor']);
         }
         else{
-          this.router.navigate(['/home-alumno'] )
-        }
+          this.router.navigate(['/home-alumno'], {state : res} )
+        }       
       })
     })
     .catch(err => {

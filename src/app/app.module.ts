@@ -17,6 +17,10 @@ import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatInputModule} from '@angular/material';
 import {MatMenuModule} from '@angular/material/menu'; 
 import {MatDialogModule} from '@angular/material/dialog'; 
+import {MatIconModule} from '@angular/material/icon'; 
+import {MatSidenavModule} from '@angular/material/sidenav';
+import {MatToolbarModule} from '@angular/material/toolbar'; 
+import {MatListModule} from '@angular/material/list'; 
 
 import { LogInComponent } from './modules/log-in/log-in.component';
 import { HomeAlumnoComponent } from './modules/alumno/home-alumno/home-alumno.component';
@@ -41,7 +45,11 @@ import { SplashComponent } from './modules/splash/splash.component';
     ReactiveFormsModule,
     AngularFirestoreModule,
     MatMenuModule,
-    MatDialogModule
+    MatDialogModule,
+    MatIconModule,
+    MatSidenavModule,
+    MatToolbarModule,
+    MatListModule
   ],
   providers: [],
   bootstrap: [AppComponent]
