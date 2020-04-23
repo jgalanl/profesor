@@ -4,6 +4,7 @@ import { UsuariosService } from 'src/app/services/usuarios.service';
 import { Location } from '@angular/common';
 import { User } from 'src/app/data/user';
 import { MediaMatcher } from '@angular/cdk/layout';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-home-alumno',
@@ -13,11 +14,12 @@ import { MediaMatcher } from '@angular/cdk/layout';
 export class HomeAlumnoComponent implements OnInit, OnDestroy {
 
   mobileQuery: MediaQueryList;
-  private asignaturas: Array<Asignatura> = []
+  // private asignaturas: Array<Asignatura> = []
   private user: User
   private _mobileQueryListener: () => void;
 
-  constructor(private location: Location, private us: UsuariosService, changeDetectorRef: ChangeDetectorRef, media: MediaMatcher) { 
+  constructor(private router: Router, private us: UsuariosService, changeDetectorRef: ChangeDetectorRef, 
+              media: MediaMatcher) { 
     this.user = new User()
     this.mobileQuery = media.matchMedia('(max-width: 600px)');
     this._mobileQueryListener = () => changeDetectorRef.detectChanges();
@@ -27,7 +29,10 @@ export class HomeAlumnoComponent implements OnInit, OnDestroy {
   
   ngOnInit() {
     console.log(history.state)
+    this.user.email = history.state.email
     this.user.nombre = history.state.nombre
+    this.user.rol = history.state.rol
+    // this.cargarAsignaturas()
     // this.user.nombre = history.state.nombre
     //Servicio que cargue las asignaturas del usurio
     // console.log(this.location.getState());
@@ -37,6 +42,10 @@ export class HomeAlumnoComponent implements OnInit, OnDestroy {
   ngOnDestroy(): void {
     this.mobileQuery.removeListener(this._mobileQueryListener);
   }
+
+  // async cargarAsignaturas() {
+  //   await this.us.getAsignaturaByEmail(this.user.email)
+  // }
 
 
 }

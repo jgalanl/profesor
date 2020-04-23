@@ -21,11 +21,14 @@ import {MatIconModule} from '@angular/material/icon';
 import {MatSidenavModule} from '@angular/material/sidenav';
 import {MatToolbarModule} from '@angular/material/toolbar'; 
 import {MatListModule} from '@angular/material/list'; 
+import {MatGridListModule} from '@angular/material/grid-list'; 
 
 import { LogInComponent } from './modules/log-in/log-in.component';
 import { HomeAlumnoComponent } from './modules/alumno/home-alumno/home-alumno.component';
 import { HomeProfesorComponent } from './modules/profesor/home-profesor/home-profesor.component';
 import { SplashComponent } from './modules/splash/splash.component';
+import { LenguaComponent } from './modules/alumno/lengua/lengua.component';
+import { AsignaturasComponent } from './modules/alumno/asignaturas/asignaturas.component';
 
 @NgModule({
   declarations: [
@@ -34,6 +37,8 @@ import { SplashComponent } from './modules/splash/splash.component';
     HomeAlumnoComponent,
     HomeProfesorComponent,
     SplashComponent,
+    LenguaComponent,
+    AsignaturasComponent,
   ],
   imports: [
     BrowserModule,
@@ -49,7 +54,8 @@ import { SplashComponent } from './modules/splash/splash.component';
     MatIconModule,
     MatSidenavModule,
     MatToolbarModule,
-    MatListModule
+    MatListModule,
+    MatGridListModule
   ],
   providers: [],
   bootstrap: [AppComponent]
