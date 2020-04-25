@@ -1,3 +1,5 @@
+import { Tema } from './tema'
+
 export class Asignatura {
-    titulo:string
+    temas: Array<Tema>
 }

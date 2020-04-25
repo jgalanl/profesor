@@ -1,0 +1,11 @@
+<mat-toolbar class="toolbar">
+    <span>Lengua castellana y Literatura - 4º</span>
+</mat-toolbar>
+
+<h3 class="mat-display-2">{{ tema.titulo }}</h3>
+<h4 class="mat-display-1">{{ tema.contenido }} </h4>
+<h4 class="mat-display-1">Ejemplos:</h4>
+<h5 class="mat-display-1" *ngFor="let ejemplo of tema.ejemplos">{{ ejemplo }}</h5>
+
+<button mat-raised-button color="primary" routerLink="ejercicios">Ejercicios</button>
+

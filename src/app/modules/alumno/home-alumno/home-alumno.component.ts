@@ -1,7 +1,5 @@
 import { Component, OnInit, ChangeDetectorRef, OnDestroy } from '@angular/core';
-import { Asignatura } from 'src/app/data/asignatura';
 import { UsuariosService } from 'src/app/services/usuarios.service';
-import { Location } from '@angular/common';
 import { User } from 'src/app/data/user';
 import { MediaMatcher } from '@angular/cdk/layout';
 import { Router } from '@angular/router';

@@ -29,6 +29,8 @@ import { HomeProfesorComponent } from './modules/profesor/home-profesor/home-pro
 import { SplashComponent } from './modules/splash/splash.component';
 import { LenguaComponent } from './modules/alumno/lengua/lengua.component';
 import { AsignaturasComponent } from './modules/alumno/asignaturas/asignaturas.component';
+import { TemaComponent } from './modules/alumno/tema/tema.component';
+import { EjerciciosComponent } from './modules/alumno/ejercicios/ejercicios.component';
 
 @NgModule({
   declarations: [
@@ -39,6 +41,8 @@ import { AsignaturasComponent } from './modules/alumno/asignaturas/asignaturas.c
     SplashComponent,
     LenguaComponent,
     AsignaturasComponent,
+    TemaComponent,
+    EjerciciosComponent,
   ],
   imports: [
     BrowserModule,
