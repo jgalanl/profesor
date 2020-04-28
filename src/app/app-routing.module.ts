@@ -7,7 +7,7 @@ import { SplashComponent } from './modules/splash/splash.component';
 import { LenguaComponent } from './modules/alumno/lengua/lengua.component';
 import { AsignaturasComponent } from './modules/alumno/asignaturas/asignaturas.component';
 import { TemaComponent } from './modules/alumno/tema/tema.component';
-import { EjerciciosComponent } from './modules/alumno/ejercicios/ejercicios.component';
+import { EjercicioComponent } from './modules/alumno/ejercicio/ejercicio.component';
 
 const routes: Routes = [
   { path: '',  pathMatch: 'full', redirectTo: '/splash' },
@@ -18,7 +18,7 @@ const routes: Routes = [
     { path: 'asignaturas', component: AsignaturasComponent},
     { path: 'lengua', component: LenguaComponent},
     { path: 'lengua/tema/:id', component: TemaComponent},
-    { path: 'lengua/tema/:id/ejercicios', component: EjerciciosComponent}
+    { path: 'lengua/tema/:id/ejercicio/:id', component: EjercicioComponent}
   ]},
   { path: 'home-profesor', component: HomeProfesorComponent },
 

@@ -1,8 +1,9 @@
 import { Injectable } from '@angular/core';
 import { AngularFirestore, AngularFirestoreCollection } from '@angular/fire/firestore';
 import { Asignatura } from '../data/asignatura';
-import { map } from 'rxjs/operators';
 import { Tema } from '../data/tema';
+import { Pregunta } from '../data/pregunta';
+import { resolve } from 'url';
 
 @Injectable({
   providedIn: 'root'
@@ -10,12 +11,9 @@ import { Tema } from '../data/tema';
 export class AsignaturasService {
 
   private afs: AngularFirestoreCollection<Asignatura>;
-  private a: AngularFirestoreCollection;
 
   constructor(private firestore: AngularFirestore) {
     this.afs = this.firestore.collection<Asignatura>('Asignaturas')
-    this.a = this.firestore.collection('Asignaturas')
-
   }
 
   public async getTemasByAsignatura(asignatura: string): Promise<Asignatura> {
@@ -30,21 +28,16 @@ export class AsignaturasService {
     })
   }
 
-  // public async getTemasByAsignatura2(): Promise<any> {
-  //   this.a.get().toPromise().then(r => {
-  //     r.forEach((doc) => {
-  //       console.log(doc.id, "=>", doc.data())
-  //     })
-  //   })
-  // }
-  
-  // public async getTemasByAsignatura2(): Promise<any> {
-  //   this.a.get().pipe(
-  //     map(r => {
-  //       r.docs.map(a => {
-  //         console.log(a.data())
-  //       })
-  //     })
-  //   )
-  // }
+ public async getPreguntas(): Promise<Pregunta[]>{
+   return new Promise<Pregunta[]>((resolve, reject) => {
+    this.firestore.collection<any>('Asignaturas/Lengua/Tema-1/Tema-1/Ejercicios/', ref => 
+    ref.where('nivel', '==', 'fácil')).valueChanges().subscribe(data => {
+      resolve(data as Pregunta[])
+    })
+     
+    })
+
+    
+  }
+
 }

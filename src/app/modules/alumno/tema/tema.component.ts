@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Tema } from 'src/app/data/tema';
 import { AsignaturasService } from 'src/app/services/asignaturas.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-tema',
@@ -9,7 +10,7 @@ import { AsignaturasService } from 'src/app/services/asignaturas.service';
 })
 export class TemaComponent implements OnInit {
   tema: Tema
-  constructor(private asignaturasService: AsignaturasService) { }
+  constructor(private router: Router, private asignaturasService: AsignaturasService) { }
 
   ngOnInit() {
     this.tema = new Tema()
@@ -19,6 +20,10 @@ export class TemaComponent implements OnInit {
   async getTema(){
     this.tema = await this.asignaturasService.getTema()
     console.log(this.tema)
+  }
+
+  goToEjercicios(){
+    this.router.navigate([this.router.url+'/ejercicios'] )
   }
 
 }

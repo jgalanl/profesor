@@ -30,7 +30,7 @@ import { SplashComponent } from './modules/splash/splash.component';
 import { LenguaComponent } from './modules/alumno/lengua/lengua.component';
 import { AsignaturasComponent } from './modules/alumno/asignaturas/asignaturas.component';
 import { TemaComponent } from './modules/alumno/tema/tema.component';
-import { EjerciciosComponent } from './modules/alumno/ejercicios/ejercicios.component';
+import { EjercicioComponent } from './modules/alumno/ejercicio/ejercicio.component';
 
 @NgModule({
   declarations: [
@@ -42,7 +42,7 @@ import { EjerciciosComponent } from './modules/alumno/ejercicios/ejercicios.comp
     LenguaComponent,
     AsignaturasComponent,
     TemaComponent,
-    EjerciciosComponent,
+    EjercicioComponent,
   ],
   imports: [
     BrowserModule,

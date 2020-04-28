@@ -1,5 +1,6 @@
 export class Tema {
     titulo:string
     contenido: string
-    ejemplso: Array<String>
+    ejemplos: Array<String>
+    ejercicios: Array<String>
 }
