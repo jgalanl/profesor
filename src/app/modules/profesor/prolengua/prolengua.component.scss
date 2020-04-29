@@ -1,0 +1,43 @@
+.toolbar {
+  background: purple;
+  color: white;
+}
+
+.mat-list-icon {
+  color: purple;
+}
+
+.mat-list-item {
+  cursor: pointer;
+}
+
+.boton {
+  display: flex;
+  border: 0;
+}
+
+.example-button-row {
+  display: table-cell;
+}
+
+.example-flex-container {
+  display: flex;
+  justify-content: space-between;
+  width: 480px;
+}
+
+.example-button-container {
+  display: flex;
+  justify-content: center;
+  width: 120px;
+}
+
+.color_verde{
+  background-color:green;
+}
+
+.md-button-right  {
+  position: absolute;
+  right: 0px;
+  margin: 0;
+}
