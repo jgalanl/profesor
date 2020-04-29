@@ -30,20 +30,9 @@ export class HomeAlumnoComponent implements OnInit, OnDestroy {
     this.user.email = history.state.email
     this.user.nombre = history.state.nombre
     this.user.rol = history.state.rol
-    // this.cargarAsignaturas()
-    // this.user.nombre = history.state.nombre
-    //Servicio que cargue las asignaturas del usurio
-    // console.log(this.location.getState());
-    // this.us.getAsignaturaByEmail("email")
   }
 
   ngOnDestroy(): void {
     this.mobileQuery.removeListener(this._mobileQueryListener);
   }
-
-  // async cargarAsignaturas() {
-  //   await this.us.getAsignaturaByEmail(this.user.email)
-  // }
-
-
 }

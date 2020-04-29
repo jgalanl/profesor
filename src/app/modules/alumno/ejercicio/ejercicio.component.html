@@ -1,1 +1,28 @@
-<p>ejercicio works!</p>
+<mat-toolbar color="purple" class="toolbar" >
+    <span>Lengua castellana y Literatura - 4º</span>
+</mat-toolbar>
+
+<div class="stats">
+    <p><span class="material-icons" id="points"> emoji_events</span> {{ puntos }}
+
+    <span class="material-icons" id="time"> access_alarm</span>  {{ tiempo }}
+    </p>
+</div>
+
+<div *ngIf="preguntaActual !== undefined && preguntaActual !== null">
+    <p>{{ preguntaActual.enunciado }}</p>
+    <mat-grid-list cols="2" rowHeight="6:1">
+        <mat-grid-tile class="opcion" *ngFor="let i of preguntaActual.opciones;" (click)="checkOpcion(i)" style="background-color: royalblue;" >
+             {{ i.opcion }}
+        </mat-grid-tile>
+    </mat-grid-list>
+    
+    <div class="answer" >
+        <span *ngIf="correct" class="material-icons" id="correct">
+            check_circle
+        </span>
+        <span *ngIf="!correct && correct !== undefined" class="material-icons" id="incorrect">
+            cancel
+        </span>
+    </div>
+</div>

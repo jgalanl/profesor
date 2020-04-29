@@ -30,7 +30,7 @@ import { SplashComponent } from './modules/splash/splash.component';
 import { LenguaComponent } from './modules/alumno/lengua/lengua.component';
 import { AsignaturasComponent } from './modules/alumno/asignaturas/asignaturas.component';
 import { TemaComponent } from './modules/alumno/tema/tema.component';
-import { EjercicioComponent } from './modules/alumno/ejercicio/ejercicio.component';
+import { EjercicioComponent, DialogOverviewExampleDialog } from './modules/alumno/ejercicio/ejercicio.component';
 
 @NgModule({
   declarations: [
@@ -43,6 +43,7 @@ import { EjercicioComponent } from './modules/alumno/ejercicio/ejercicio.compone
     AsignaturasComponent,
     TemaComponent,
     EjercicioComponent,
+    DialogOverviewExampleDialog
   ],
   imports: [
     BrowserModule,
@@ -61,6 +62,7 @@ import { EjercicioComponent } from './modules/alumno/ejercicio/ejercicio.compone
     MatListModule,
     MatGridListModule
   ],
+  entryComponents: [DialogOverviewExampleDialog],
   providers: [],
   bootstrap: [AppComponent]
 })

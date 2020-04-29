@@ -30,14 +30,15 @@ export class AsignaturasService {
 
  public async getPreguntas(): Promise<Pregunta[]>{
    return new Promise<Pregunta[]>((resolve, reject) => {
-    this.firestore.collection<any>('Asignaturas/Lengua/Tema-1/Tema-1/Ejercicios/', ref => 
-    ref.where('nivel', '==', 'fácil')).valueChanges().subscribe(data => {
-      resolve(data as Pregunta[])
+     this.firestore.collection<any>('Asignaturas/Lengua/Tema-1/Tema-1/Ejercicios/', ref => 
+     ref.where('nivel', '==', 'fácil')).valueChanges().subscribe(data => {
+       if(data){
+        resolve(data as Pregunta[])
+       }
+       else{
+         reject()
+       }
+      })
     })
-     
-    })
-
-    
   }
-
 }

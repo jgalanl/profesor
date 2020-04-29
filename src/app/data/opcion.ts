@@ -1,6 +1,6 @@
 export class Opcion {
     opcionId:number
-    respuesta:string
+    opcion:string
     correcta:boolean
     explicacion:string
 }
