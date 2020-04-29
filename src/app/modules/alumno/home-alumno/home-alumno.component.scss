@@ -34,7 +34,62 @@
   width: 2em;
   height: 2em;
 }
+/*//////////////////////////////////////cambios*/
 
 .toolbar {
-  background: yellowgreen;
+  background: #c8f098;
+  height: 54px;
+}
+
+.mat-toolbar-single-row {
+  padding: 0px;
+}
+
+.tamanio {
+  font-size: 40px;
+}
+
+.mat-list-base {
+  padding-top: 0px;
+}
+
+.mat-nav-list .mat-list-item:focus {
+  background: #3a9f7f;
+  color: #fff;
+}
+
+.active_toolbar {
+  background: #3a9f7f;
+  color: #fff;
+  height: 55px !important;
+}
+
+#menu {
+  background: #c8f098;
+  margin-left: 1px;
+}
+
+#menu a:hover {
+  background: #3a9f7f;
+  color: #fff;
+}
+
+#menu a {
+  border-bottom: 1px solid #97bc74;
+  border-top: 1px unset #97bc74;
+}
+
+.mat-list-base .mat-list-item {
+  height: 40px;
+}
+
+.mat-drawer {
+  overflow-y: visible;
+  height: 302px;
+  width: 220px;
+}
+
+mat-nav-list {
+  border-left: 1px solid #97bc74;
+  border-right: 1px solid #97bc74;
 }

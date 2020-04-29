@@ -11,17 +11,20 @@
   <mat-sidenav-container
     class="sidenav-container"
     [style.marginTop.px]="mobileQuery.matches ? 56 : 0"
-  >
+    ><!----->
     <mat-sidenav
       #snav
       [mode]="mobileQuery.matches ? 'over' : 'over'"
       [fixedInViewport]="mobileQuery.matches"
       fixedTopGap="56"
-    >
-      <!-- <p>{{ user.nombre }}</p>
-      <p>{{ user.rol }}</p> -->
+      ><!------>
       <mat-nav-list id="menu">
-        <a mat-list-item routerLink="#" class="active_toolbar">Nombre </a>
+        <a mat-list-item routerLink="#" class="active_toolbar">
+          <p>{{ user.nombre }}</p>
+          <p>&nbsp;-&nbsp;</p>
+          <p>{{ user.rol }}</p></a
+        >
+
         <a mat-list-item routerLink=".">
           <p mat-line>Asignaturas</p>
           <img
@@ -66,7 +69,6 @@
         </a>
       </mat-nav-list>
     </mat-sidenav>
-
     <mat-sidenav-content>
       <router-outlet></router-outlet>
     </mat-sidenav-content>
