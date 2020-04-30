@@ -10,6 +10,8 @@ import { TemaComponent } from "./modules/alumno/tema/tema.component";
 import { EjercicioComponent } from "./modules/alumno/ejercicio/ejercicio.component";
 import { ProasignaturaComponent } from "./modules/profesor/proasignatura/proasignatura.component";
 import { ProlenguaComponent } from "./modules/profesor/prolengua/prolengua.component";
+import { ProtemaComponent } from "./modules/profesor/protema/protema.component";
+import { EditemaComponent } from "./modules/profesor/editema/editema.component";
 
 const routes: Routes = [
   { path: "", pathMatch: "full", redirectTo: "/splash" },
@@ -33,6 +35,8 @@ const routes: Routes = [
       { path: "", component: ProasignaturaComponent },
       { path: "proasignaturas", component: ProasignaturaComponent },
       { path: "prolengua", component: ProlenguaComponent },
+      { path: "prolengua/protema/:id", component: ProtemaComponent },
+      { path: "prolengua/editema/:id", component: EditemaComponent },
     ],
   },
 ];

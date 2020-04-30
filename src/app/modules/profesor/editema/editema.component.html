@@ -1,0 +1,46 @@
+<mat-toolbar color="purple" class="toolbar">
+  <span>Lengua castellana y Literatura 4º</span>
+  <span> - Editar Tema</span>
+</mat-toolbar>
+
+<form>
+  <mat-form-field>
+    <h3 class="mat-display-2">{{ tema.titulo }}</h3>
+  </mat-form-field>
+  <mat-form-field>
+    <h4 class="mat-display-1">{{ tema.contenido }}</h4>
+  </mat-form-field>
+  <h4 class="mat-display-1">Ejemplos:</h4>
+  <h5 class="mat-display-1" *ngFor="let ejemplo of tema.ejemplos">
+    {{ ejemplo }}
+  </h5>
+</form>
+
+<h4 class="mat-display-1">Ejercicios:</h4>
+<mat-nav-list>
+  <mat-list-item *ngFor="let ejercicio of tema.ejercicios"
+    ><div mat-line routerLink="ejercicio/{{ ejercicio.id }}">
+      <mat-icon mat-list-icon>subject</mat-icon>
+      <div mat-line>Ejercicio {{ ejercicio.id }}</div>
+      <div mat-line>Nivel: {{ ejercicio.nivel }}</div>
+    </div>
+    <button
+      mat-mini-fab
+      class="color_verde"
+      style="margin-right: 6px;"
+      aria-label="Example icon button with a delete icon"
+      routerLink="editema/{{ i + 1 }}"
+    >
+      <mat-icon>edit</mat-icon>
+    </button>
+    <button
+      mat-mini-fab
+      color="warn"
+      class=""
+      aria-label="Example icon button with a delete icon"
+      (click)="onDeleteTema(tema)"
+    >
+      <mat-icon>close</mat-icon>
+    </button>
+  </mat-list-item>
+</mat-nav-list>

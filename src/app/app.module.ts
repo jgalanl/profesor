@@ -1,5 +1,6 @@
 import { BrowserModule } from "@angular/platform-browser";
 import { NgModule } from "@angular/core";
+import { CUSTOM_ELEMENTS_SCHEMA } from "@angular/core";
 
 import { AppRoutingModule } from "./app-routing.module";
 import { AppComponent } from "./app.component";
@@ -39,6 +40,8 @@ import {
 import { ProasignaturaComponent } from "./modules/profesor/proasignatura/proasignatura.component";
 import { ProlenguaComponent } from "./modules/profesor/prolengua/prolengua.component";
 import { ProtemaComponent } from "./modules/profesor/protema/protema.component";
+import { EditemaComponent } from "./modules/profesor/editema/editema.component";
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -54,6 +57,7 @@ import { ProtemaComponent } from "./modules/profesor/protema/protema.component";
     ProasignaturaComponent,
     ProlenguaComponent,
     ProtemaComponent,
+    EditemaComponent,
   ],
   imports: [
     BrowserModule,
@@ -77,5 +81,6 @@ import { ProtemaComponent } from "./modules/profesor/protema/protema.component";
   entryComponents: [DialogOverviewExampleDialog],
   providers: [],
   bootstrap: [AppComponent],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })
 export class AppModule {}
