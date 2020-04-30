@@ -1,1 +1,76 @@
-<p>home-profesor jesus!</p>
+<div class="container" [class.is-mobile]="mobileQuery.matches">
+  <mat-toolbar class="toolbar">
+    <button mat-icon-button (click)="snav.toggle()">
+      <mat-icon class="tamanio">menu</mat-icon>
+    </button>
+    <div class="logo">
+      <img src="../../../assets/login1.png" />
+    </div>
+  </mat-toolbar>
+
+  <mat-sidenav-container
+    class="sidenav-container"
+    [style.marginTop.px]="mobileQuery.matches ? 56 : 0"
+    ><!----->
+    <mat-sidenav
+      #snav
+      [mode]="mobileQuery.matches ? 'over' : 'over'"
+      [fixedInViewport]="mobileQuery.matches"
+      fixedTopGap="56"
+      ><!------>
+      <mat-nav-list id="menu">
+        <a mat-list-item routerLink="#" class="active_toolbar">
+          <p>{{ user.nombre }}</p>
+          <p>&nbsp;-&nbsp;</p>
+          <p>{{ user.rol }}</p></a
+        >
+
+        <a mat-list-item routerLink=".">
+          <p mat-line>Asignaturas</p>
+          <img
+            style="width: 30px; height: 30px;"
+            src="../../../assets/profesor/archivo.png"
+          />
+        </a>
+        <a mat-list-item routerLink=".">
+          <p mat-line>Resultados</p>
+          <img
+            style="width: 30px; height: 30px;"
+            src="../../../assets/profesor/lista.png"
+          />
+        </a>
+        <a mat-list-item routerLink=".">
+          <p mat-line>Calendario</p>
+          <img
+            style="width: 30px; height: 30px;"
+            src="../../../assets/profesor/calendario.png"
+          />
+        </a>
+        <a mat-list-item routerLink=".">
+          <p mat-line>Mensajes</p>
+          <img
+            style="width: 30px; height: 30px;"
+            src="../../../assets/profesor/envelope.png"
+          />
+        </a>
+        <a mat-list-item routerLink=".">
+          <p mat-line>Ayuda</p>
+          <img
+            style="width: 30px; height: 30px;"
+            src="../../../assets/profesor/signo.png"
+          />
+        </a>
+        <a mat-list-item routerLink=".">
+          <p mat-line>Configuración</p>
+          <img
+            style="width: 30px; height: 30px;"
+            src="../../../assets/profesor/engranaje.png"
+          />
+        </a>
+      </mat-nav-list>
+    </mat-sidenav>
+    <mat-sidenav-content>
+      <router-outlet></router-outlet>
+    </mat-sidenav-content>
+  </mat-sidenav-container>
+</div>

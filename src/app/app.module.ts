@@ -1,38 +1,45 @@
-import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { BrowserModule } from "@angular/platform-browser";
+import { NgModule } from "@angular/core";
 
-import { AppRoutingModule } from './app-routing.module';
-import { AppComponent } from './app.component';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { environment } from '../environments/environment';
+import { AppRoutingModule } from "./app-routing.module";
+import { AppComponent } from "./app.component";
+import { FormsModule, ReactiveFormsModule } from "@angular/forms";
+import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
+import { environment } from "../environments/environment";
 
 //Firebase
-import { AngularFireModule } from '@angular/fire';
-import { AngularFireAuthModule } from '@angular/fire/auth';
-import { AngularFirestoreModule } from '@angular/fire/firestore'
+import { AngularFireModule } from "@angular/fire";
+import { AngularFireAuthModule } from "@angular/fire/auth";
+import { AngularFirestoreModule } from "@angular/fire/firestore";
 
 //Angular material
-import {MatFormFieldModule} from '@angular/material/form-field'; 
-import {MatInputModule} from '@angular/material';
-import {MatMenuModule} from '@angular/material/menu'; 
-import {MatDialogModule} from '@angular/material/dialog'; 
-import {MatIconModule} from '@angular/material/icon'; 
-import {MatSidenavModule} from '@angular/material/sidenav';
-import {MatToolbarModule} from '@angular/material/toolbar'; 
-import {MatListModule} from '@angular/material/list'; 
-import {MatGridListModule} from '@angular/material/grid-list'; 
+import { MatFormFieldModule } from "@angular/material/form-field";
+import { MatInputModule } from "@angular/material";
+import { MatMenuModule } from "@angular/material/menu";
+import { MatDialogModule } from "@angular/material/dialog";
+import { MatIconModule } from "@angular/material/icon";
+import { MatSidenavModule } from "@angular/material/sidenav";
+import { MatToolbarModule } from "@angular/material/toolbar";
+import { MatListModule } from "@angular/material/list";
+import { MatGridListModule } from "@angular/material/grid-list";
+import { MatButtonModule } from "@angular/material/button";
+import { MatCardModule } from "@angular/material/card";
 
-import { LogInComponent } from './modules/log-in/log-in.component';
-import { HomeAlumnoComponent } from './modules/alumno/home-alumno/home-alumno.component';
-import { HomeProfesorComponent } from './modules/profesor/home-profesor/home-profesor.component';
-import { SplashComponent } from './modules/splash/splash.component';
-import { LenguaComponent } from './modules/alumno/lengua/lengua.component';
-import { AsignaturasComponent } from './modules/alumno/asignaturas/asignaturas.component';
-import { TemaComponent } from './modules/alumno/tema/tema.component';
-import { EjercicioComponent, DialogOverviewExampleDialog } from './modules/alumno/ejercicio/ejercicio.component';
+import { LogInComponent } from "./modules/log-in/log-in.component";
+import { HomeAlumnoComponent } from "./modules/alumno/home-alumno/home-alumno.component";
+import { HomeProfesorComponent } from "./modules/profesor/home-profesor/home-profesor.component";
+import { SplashComponent } from "./modules/splash/splash.component";
+import { LenguaComponent } from "./modules/alumno/lengua/lengua.component";
+import { AsignaturasComponent } from "./modules/alumno/asignaturas/asignaturas.component";
+import { TemaComponent } from "./modules/alumno/tema/tema.component";
+import {
+  EjercicioComponent,
+  DialogOverviewExampleDialog,
+} from "./modules/alumno/ejercicio/ejercicio.component";
+import { ProasignaturaComponent } from "./modules/profesor/proasignatura/proasignatura.component";
+import { ProlenguaComponent } from "./modules/profesor/prolengua/prolengua.component";
+import { ProtemaComponent } from "./modules/profesor/protema/protema.component";
 import { ResultadosComponent } from './modules/alumno/resultados/resultados.component';
-
 @NgModule({
   declarations: [
     AppComponent,
@@ -45,7 +52,10 @@ import { ResultadosComponent } from './modules/alumno/resultados/resultados.comp
     TemaComponent,
     EjercicioComponent,
     DialogOverviewExampleDialog,
-    ResultadosComponent
+    ResultadosComponent,
+    ProasignaturaComponent,
+    ProlenguaComponent,
+    ProtemaComponent,
   ],
   imports: [
     BrowserModule,
@@ -62,10 +72,12 @@ import { ResultadosComponent } from './modules/alumno/resultados/resultados.comp
     MatSidenavModule,
     MatToolbarModule,
     MatListModule,
-    MatGridListModule
+    MatGridListModule,
+    MatButtonModule,
+    MatCardModule,
   ],
   entryComponents: [DialogOverviewExampleDialog],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}
