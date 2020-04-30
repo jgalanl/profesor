@@ -38,6 +38,10 @@ export class EjercicioComponent implements OnInit {
     this.getPreguntas()
   }
 
+  ngOnDestroy() {
+    clearInterval(this.interval)
+  }
+
   async getPreguntas(){
     this.preguntas = await this.asignaturasService.getPreguntas()
     this.preguntaActual = this.preguntas.pop()
