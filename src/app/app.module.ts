@@ -31,6 +31,7 @@ import { LenguaComponent } from './modules/alumno/lengua/lengua.component';
 import { AsignaturasComponent } from './modules/alumno/asignaturas/asignaturas.component';
 import { TemaComponent } from './modules/alumno/tema/tema.component';
 import { EjercicioComponent, DialogOverviewExampleDialog } from './modules/alumno/ejercicio/ejercicio.component';
+import { ResultadosComponent } from './modules/alumno/resultados/resultados.component';
 
 @NgModule({
   declarations: [
@@ -43,7 +44,8 @@ import { EjercicioComponent, DialogOverviewExampleDialog } from './modules/alumn
     AsignaturasComponent,
     TemaComponent,
     EjercicioComponent,
-    DialogOverviewExampleDialog
+    DialogOverviewExampleDialog,
+    ResultadosComponent
   ],
   imports: [
     BrowserModule,

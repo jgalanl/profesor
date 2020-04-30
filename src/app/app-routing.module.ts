@@ -8,6 +8,7 @@ import { LenguaComponent } from './modules/alumno/lengua/lengua.component';
 import { AsignaturasComponent } from './modules/alumno/asignaturas/asignaturas.component';
 import { TemaComponent } from './modules/alumno/tema/tema.component';
 import { EjercicioComponent } from './modules/alumno/ejercicio/ejercicio.component';
+import { ResultadosComponent } from './modules/alumno/resultados/resultados.component';
 
 const routes: Routes = [
   { path: '',  pathMatch: 'full', redirectTo: '/splash' },
@@ -18,7 +19,8 @@ const routes: Routes = [
     { path: 'asignaturas', component: AsignaturasComponent},
     { path: 'lengua', component: LenguaComponent},
     { path: 'lengua/tema/:id', component: TemaComponent},
-    { path: 'lengua/tema/:id/ejercicio/:id', component: EjercicioComponent}
+    { path: 'lengua/tema/:id/ejercicio/:id', component: EjercicioComponent},
+    { path: 'resultados', component: ResultadosComponent}
   ]},
   { path: 'home-profesor', component: HomeProfesorComponent },
 

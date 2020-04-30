@@ -1,9 +1,37 @@
-<h1 mat-dialog-title>Enhorabuena!</h1>
-<div mat-dialog-content>
-  <p>Has conseguido {{data.puntos}}</p>
+<h1 mat-dialog-title>¡Enhorabuena! Has acertado {{data.aciertos}} preguntas
+  y has fallado {{data.fallos}}.
+</h1>
 
+<div mat-dialog-content>
+  <p><span class="material-icons" id="points"> emoji_events</span> + {{data.puntos}} puntos.</p>
 </div>
+
+<div mat-dialog-content>
+  <div *ngIf="data.fallos === 0; else elseBlock">¡Has acertado todas las preguntas!</div>
+  <ng-template #elseBlock>
+    <p>Antes de continuar revisa las preguntas que no has acertado:</p>
+    <div class="fallos" *ngFor="let pregunta of data.preguntasFalladas;">
+      <p>{{ pregunta.enunciado }}</p>
+      <mat-grid-list cols="2" rowHeight="6:1">
+        <div *ngFor="let i of pregunta.opciones;">
+          <mat-grid-tile *ngIf="i.correcta "class="opcion;" style="background-color: limegreen;">
+            {{ i.opcion }}
+          </mat-grid-tile>
+          <mat-grid-tile *ngIf="!i.correcta && !i.seleccionada"class="opcion;" style="background-color: royalblue;">
+            {{ i.opcion }}
+          </mat-grid-tile>
+          <mat-grid-tile *ngIf="i.seleccionada "class="opcion;" style="background-color: red;">
+            {{ i.opcion }}
+          </mat-grid-tile>
+        </div>
+      </mat-grid-list>
+      <p>{{pregunta.explicacion}}</p>
+    </div>
+  </ng-template>
+</div>
+
 <div mat-dialog-actions>
-  <button mat-button (click)="onNoClick()">Continuar</button>
+  <button mat-button (click)="onVolver()">Volver</button>
   <button mat-button (click)="onRepetir()">Repetir</button>
+  <button mat-button (click)="onResultados()">Resultados</button>
 </div>
