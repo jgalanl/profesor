@@ -26,10 +26,11 @@ export class HomeAlumnoComponent implements OnInit, OnDestroy {
 
   
   ngOnInit() {
-    console.log(history.state)
     this.user.email = history.state.email
     this.user.nombre = history.state.nombre
     this.user.rol = history.state.rol
+    this.user.puntos_actuales = history.state.puntos_actuales
+    this.user.nivel = history.state.nivel
   }
 
   ngOnDestroy(): void {

@@ -25,7 +25,7 @@ import { MatGridListModule } from "@angular/material/grid-list";
 import { MatButtonModule } from "@angular/material/button";
 import { MatCardModule } from "@angular/material/card";
 
-import { LogInComponent } from "./modules/log-in/log-in.component";
+import { LogInComponent, LoginDialog } from "./modules/log-in/log-in.component";
 import { HomeAlumnoComponent } from "./modules/alumno/home-alumno/home-alumno.component";
 import { HomeProfesorComponent } from "./modules/profesor/home-profesor/home-profesor.component";
 import { SplashComponent } from "./modules/splash/splash.component";
@@ -40,6 +40,8 @@ import { ProasignaturaComponent } from "./modules/profesor/proasignatura/proasig
 import { ProlenguaComponent } from "./modules/profesor/prolengua/prolengua.component";
 import { ProtemaComponent } from "./modules/profesor/protema/protema.component";
 import { ResultadosComponent } from './modules/alumno/resultados/resultados.component';
+
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -52,6 +54,7 @@ import { ResultadosComponent } from './modules/alumno/resultados/resultados.comp
     TemaComponent,
     EjercicioComponent,
     DialogOverviewExampleDialog,
+    LoginDialog,
     ResultadosComponent,
     ProasignaturaComponent,
     ProlenguaComponent,
@@ -76,7 +79,7 @@ import { ResultadosComponent } from './modules/alumno/resultados/resultados.comp
     MatButtonModule,
     MatCardModule,
   ],
-  entryComponents: [DialogOverviewExampleDialog],
+  entryComponents: [DialogOverviewExampleDialog, LoginDialog],
   providers: [],
   bootstrap: [AppComponent],
 })

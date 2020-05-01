@@ -3,8 +3,12 @@ import { AsignaturasService } from 'src/app/services/asignaturas.service';
 import { Pregunta } from 'src/app/data/pregunta';
 import { Opcion } from 'src/app/data/opcion';
 import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import { Location } from '@angular/common';
+import { AuthService } from 'src/app/services/auth.service';
+import { ResultadosService } from 'src/app/services/resultados.service';
+import { Resultado } from 'src/app/data/resultado';
+import { UsuariosService } from 'src/app/services/usuarios.service';
 
 export interface DialogData {
   puntos: number
@@ -29,23 +33,24 @@ export class EjercicioComponent implements OnInit {
   aciertos: number = 0
   fallos: number = 0
 
-  constructor(private router: Router, private location: Location, 
-    private asignaturasService: AsignaturasService, public dialog: MatDialog) { 
+  constructor(private auth:AuthService, private resultadoServie: ResultadosService,
+     private router: Router, private location: Location, private route: ActivatedRoute,
+     private asignaturasService: AsignaturasService, public dialog: MatDialog, private usr: UsuariosService) { 
        this.preguntasFalladas = new Array<Pregunta>()
      }
 
   ngOnInit() {
-    this.getPreguntas()
+    this.getPreguntas(this.route.snapshot.paramMap.get('asignatura'), this.route.snapshot.paramMap.get('idTema'), 
+    this.route.snapshot.paramMap.get('idEjercicio'))
   }
 
   ngOnDestroy() {
     clearInterval(this.interval)
   }
 
-  async getPreguntas(){
-    this.preguntas = await this.asignaturasService.getPreguntas()
+  async getPreguntas(asignatura: string, tema: string, ejercicio: string){
+    this.preguntas = await this.asignaturasService.getPreguntas(asignatura, tema, ejercicio)
     this.preguntaActual = this.preguntas.pop()
-    console.log(this.preguntaActual)
     this.start()
   }
 
@@ -53,7 +58,6 @@ export class EjercicioComponent implements OnInit {
     this.interval = setInterval(() => {
       this.tiempo = this.tiempo - 1
       if(this.tiempo == 0){
-        console.log("Se acabo el tiempo!")
         clearInterval(this.interval)
         this.openDialog()
       }
@@ -75,7 +79,6 @@ export class EjercicioComponent implements OnInit {
       this.correct = false
       this.fallos = this.fallos + 1
       opcion.seleccionada = true
-      // this.preguntaActual.opciones[opcion.opcionId].seleccionada = true
       this.preguntasFalladas.push(this.preguntaActual)
       let timeout = setInterval(() => {
         this.correct = undefined  
@@ -86,9 +89,22 @@ export class EjercicioComponent implements OnInit {
       this.preguntaActual = this.preguntas.pop()
     }
     else {
-      console.log("Has contestado a todas las preguntas!")
       clearInterval(this.interval)
       this.openDialog()
+      // Almacenar resultados del test
+      let resultado: Resultado = {
+        usuario: this.auth.user.email,
+        aciertos: this.aciertos,
+        fallos: this.fallos,
+        puntos: this.puntos,
+        asignatura: this.route.snapshot.paramMap.get('asignatura'),
+        tema: this.route.snapshot.paramMap.get('idTema'),
+        ejercicio: this.route.snapshot.paramMap.get('idEjercicio'),
+        fecha: new Date().toDateString()
+      }
+      this.resultadoServie.insertResultado(resultado)
+      //Actualizar puntos actuales y totales
+      this.usr.updatePuntos(this.auth.user.email, this.puntos)
     }
   }
 
@@ -134,5 +150,4 @@ export class DialogOverviewExampleDialog {
   onResultados(): void {
     this.dialogRef.close(2)
   }
-
 }

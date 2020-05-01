@@ -22,16 +22,16 @@ export class AsignaturasService {
     })
   }
 
-  public async getTema(): Promise<Tema> {
-    return this.afs.doc("Lengua").collection("Tema-1").doc("Tema-1").get().toPromise().then(r => {
+  public async getTema(asignatura: string, tema: string): Promise<Tema> {
+    return this.afs.doc(asignatura).collection("Tema-"+tema).doc("Tema-"+tema).get().toPromise().then(r => {
       return r.data() as Tema
     })
   }
 
- public async getPreguntas(): Promise<Pregunta[]>{
+ public async getPreguntas(asignatura: string, tema: string, ejercicio: string): Promise<Pregunta[]>{
    return new Promise<Pregunta[]>((resolve, reject) => {
-     this.firestore.collection<any>('Asignaturas/Lengua/Tema-1/Tema-1/Ejercicios/', ref => 
-     ref.where('nivel', '==', 'fácil')).valueChanges().subscribe(data => {
+     this.firestore.collection<any>('Asignaturas/'+asignatura+'/Tema-'+tema+'/Tema-'+tema+'/Ejercicios/', ref => 
+     ref.where('nivel', '==', ejercicio)).valueChanges().subscribe(data => {
        if(data){
         resolve(data as Pregunta[])
        }

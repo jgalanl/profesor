@@ -9,7 +9,7 @@
 
 <h4 class="mat-display-1">Ejercicios:</h4>
 <mat-nav-list>
-    <mat-list-item *ngFor="let ejercicio of tema.ejercicios;" routerLink="ejercicio/{{ejercicio.id}}">
+    <mat-list-item *ngFor="let ejercicio of tema.ejercicios;" routerLink="ejercicio/{{ejercicio.nivel}}">
         <mat-icon mat-list-icon>subject</mat-icon>
         <div mat-line>Ejercicio {{ ejercicio.id }}</div>
         <div mat-line>Nivel: {{ ejercicio.nivel }}</div>

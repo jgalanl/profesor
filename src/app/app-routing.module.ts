@@ -22,9 +22,9 @@ const routes: Routes = [
     children: [
       { path: "", component: AsignaturasComponent },
       { path: "asignaturas", component: AsignaturasComponent },
-      { path: "lengua", component: LenguaComponent },
-      { path: "lengua/tema/:id", component: TemaComponent },
-      { path: "lengua/tema/:id/ejercicio/:id", component: EjercicioComponent },
+      { path: "asignaturas/:asignatura", component: LenguaComponent },
+      { path: "asignaturas/:asignatura/tema/:idTema", component: TemaComponent },
+      { path: "asignaturas/:asignatura/tema/:idTema/ejercicio/:idEjercicio", component: EjercicioComponent },
       { path: 'resultados', component: ResultadosComponent}
     ],
   },

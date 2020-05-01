@@ -4,6 +4,7 @@ import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { User } from '../data/user';
 import { Asignatura } from '../data/asignatura';
+import { firestore } from 'firebase';
 
 @Injectable({
   providedIn: 'root'
@@ -28,5 +29,14 @@ export class UsuariosService {
     return this.asignatura.doc(email).get().toPromise().then(r => {
       return r.data() as Asignatura[]
     })
+  }
+
+  public async updatePuntos(email: string, puntos: number){
+    return this.afs.doc(email).update(
+      {
+        "puntos_totales": firestore.FieldValue.increment(puntos),
+        "puntos_actuales": firestore.FieldValue.increment(puntos)
+      }
+    )
   }
 }
