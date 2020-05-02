@@ -1,0 +1,29 @@
+.answer {
+  margin-left: 50%;
+}
+
+.opcion {
+  cursor: pointer;
+}
+
+.opcion:hover {
+  background-color: skyblue;
+}
+
+.answer #correct {
+  color: greenyellow;
+}
+
+.answer #incorrect {
+  color: red;
+}
+
+.stats #points {
+  margin-left: 1em;
+  color: sandybrown;
+}
+
+.stats #time {
+  margin-left: 50%;
+  color: sienna;
+}

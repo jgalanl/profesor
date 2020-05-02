@@ -1,5 +1,6 @@
 import { BrowserModule } from "@angular/platform-browser";
 import { NgModule } from "@angular/core";
+import { CUSTOM_ELEMENTS_SCHEMA } from "@angular/core";
 
 import { AppRoutingModule } from "./app-routing.module";
 import { AppComponent } from "./app.component";
@@ -24,6 +25,7 @@ import { MatListModule } from "@angular/material/list";
 import { MatGridListModule } from "@angular/material/grid-list";
 import { MatButtonModule } from "@angular/material/button";
 import { MatCardModule } from "@angular/material/card";
+import { MatTableModule } from "@angular/material";
 
 import { LogInComponent, LoginDialog } from "./modules/log-in/log-in.component";
 import { HomeAlumnoComponent } from "./modules/alumno/home-alumno/home-alumno.component";
@@ -39,8 +41,12 @@ import {
 import { ProasignaturaComponent } from "./modules/profesor/proasignatura/proasignatura.component";
 import { ProlenguaComponent } from "./modules/profesor/prolengua/prolengua.component";
 import { ProtemaComponent } from "./modules/profesor/protema/protema.component";
-import { ResultadosComponent } from './modules/alumno/resultados/resultados.component';
+import { EditemaComponent } from "./modules/profesor/editema/editema.component";
 
+import { ResultadosComponent } from "./modules/alumno/resultados/resultados.component";
+import { ProejercicioComponent } from "./modules/profesor/proejercicio/proejercicio.component";
+import { CalificacionComponent } from "./modules/profesor/calificacion/calificacion.component";
+import { ListaclasesComponent } from "./modules/profesor/listaclases/listaclases.component";
 
 @NgModule({
   declarations: [
@@ -59,6 +65,10 @@ import { ResultadosComponent } from './modules/alumno/resultados/resultados.comp
     ProasignaturaComponent,
     ProlenguaComponent,
     ProtemaComponent,
+    EditemaComponent,
+    ProejercicioComponent,
+    CalificacionComponent,
+    ListaclasesComponent,
   ],
   imports: [
     BrowserModule,
@@ -78,9 +88,11 @@ import { ResultadosComponent } from './modules/alumno/resultados/resultados.comp
     MatGridListModule,
     MatButtonModule,
     MatCardModule,
+    MatTableModule,
   ],
   entryComponents: [DialogOverviewExampleDialog, LoginDialog],
   providers: [],
   bootstrap: [AppComponent],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })
 export class AppModule {}

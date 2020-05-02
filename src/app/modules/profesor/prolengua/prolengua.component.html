@@ -1,22 +1,36 @@
-<mat-toolbar color="purple" class="toolbar">
+<mat-toolbar class="toolbar">
   <span>Lengua castellana y Literatura - 4º</span>
 </mat-toolbar>
+
 <mat-nav-list>
   <mat-list-item *ngFor="let tema of asignatura.temas; index as i">
     <!-- <mat-icon mat-list-icon>subject</mat-icon>
  -->
-    <div mat-line>
-      <img style="width: 42px;height: 38px; float:left;margin-right: 6px" src="https://images.freeimages.com/images/large-previews/e71/frog-1371919.jpg">
-        {{ tema }}
-        <div mat-line>Tema {{ i + 1 }}</div>
+    <div mat-line routerLink="protema/{{ i + 1 }}">
+      <img
+        style="width: 42px; height: 38px; float: left; margin-right: 6px;"
+        src="https://images.freeimages.com/images/large-previews/e71/frog-1371919.jpg"
+      />
+      {{ tema }}
+      <div mat-line>Tema {{ i + 1 }}</div>
     </div>
-   
-
-    <button mat-mini-fab class="color_verde" style="margin-right: 6px;" aria-label="Example icon button with a delete icon">
-          <mat-icon>edit</mat-icon>
-        </button>
-        <button mat-mini-fab color="warn" class="" aria-label="Example icon button with a delete icon">
-          <mat-icon>close</mat-icon>
-        </button>
+    <button
+      mat-mini-fab
+      class="color_verde"
+      style="margin-right: 6px;"
+      aria-label="Example icon button with a delete icon"
+      routerLink="editema/{{ i + 1 }}"
+    >
+      <mat-icon>edit</mat-icon>
+    </button>
+    <button
+      mat-mini-fab
+      color="warn"
+      class=""
+      aria-label="Example icon button with a delete icon"
+      (click)="onDeleteTema({titulo:tema})"
+    >
+      <mat-icon>delete</mat-icon>
+    </button>
   </mat-list-item>
 </mat-nav-list>
