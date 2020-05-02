@@ -19,7 +19,7 @@ export class EditemaComponent implements OnInit {
     this.getTema();
   }
   async getTema() {
-    this.tema = await this.asignaturasService.getTema();
+    // this.tema = await this.asignaturasService.getTema();
     console.log(this.tema);
   }
 }

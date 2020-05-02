@@ -14,7 +14,6 @@ import { Subscription } from 'rxjs/internal/Subscription';
 export class HomeAlumnoComponent implements OnInit, OnDestroy {
 
   mobileQuery: MediaQueryList;
-  // private asignaturas: Array<Asignatura> = []
   private user: User
   public s_user:Subscription;
   private _mobileQueryListener: () => void;
@@ -32,11 +31,6 @@ export class HomeAlumnoComponent implements OnInit, OnDestroy {
     this.s_user = this.us.getUser(this.auth.user.email).subscribe(data => {
       this.user = data
     })
-    // this.user.email = history.state.email
-    // this.user.nombre = history.state.nombre
-    // this.user.rol = history.state.rol
-    // this.user.puntos_actuales = history.state.puntos_actuales
-    // this.user.nivel = history.state.nivel
   }
 
   ngOnDestroy(): void {

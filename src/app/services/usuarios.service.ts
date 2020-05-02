@@ -7,15 +7,6 @@ import { Observable } from "rxjs";
 import { map } from "rxjs/operators";
 import { User } from "../data/user";
 import { Asignatura } from "../data/asignatura";
-import { Injectable } from "@angular/core";
-import {
-  AngularFirestore,
-  AngularFirestoreCollection,
-} from "@angular/fire/firestore";
-import { Observable } from "rxjs";
-import { map } from "rxjs/operators";
-import { User } from "../data/user";
-import { Asignatura } from "../data/asignatura";
 import { firestore } from "firebase";
 
 @Injectable({

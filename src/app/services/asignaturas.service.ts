@@ -28,36 +28,6 @@ export class AsignaturasService {
       });
   }
 
-  public async getTema(): Promise<Tema> {
-    return this.afs
-      .doc("Lengua")
-      .collection("Tema-1")
-      .doc("Tema-1")
-      .get()
-      .toPromise()
-      .then((r) => {
-        return r.data() as Tema;
-      });
-  }
-
-  public async getPreguntas(): Promise<Pregunta[]> {
-    return new Promise<Pregunta[]>((resolve, reject) => {
-      this.firestore
-        .collection<any>(
-          "Asignaturas/Lengua/Tema-1/Tema-1/Ejercicios/",
-          (ref) => ref.where("nivel", "==", "fácil")
-        )
-        .valueChanges()
-        .subscribe((data) => {
-          if (data) {
-            resolve(data as Pregunta[]);
-          } else {
-            reject();
-          }
-        });
-    });
-  }
-
   public deleteTemasByAsignatura(tema: Asignatura): Promise<boolean> {
     return new Promise((resolve, reject) => {
       try {
@@ -67,6 +37,8 @@ export class AsignaturasService {
         reject(false);
       }
     });
+  }
+    
   public async getTema(asignatura: string, tema: string): Promise<Tema> {
     return this.afs.doc(asignatura).collection("Tema-"+tema).doc("Tema-"+tema).get().toPromise().then(r => {
       return r.data() as Tema
