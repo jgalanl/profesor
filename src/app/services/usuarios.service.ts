@@ -19,6 +19,10 @@ export class UsuariosService {
     this.asignatura = this.firestore.collection<Asignatura>('Asignaturas')
   }
 
+  public getUser(email:string):Observable<any> {
+    return this.afs.doc(email).valueChanges()
+  }
+
   public async getUserByEmail(email: string): Promise<User> {
     return this.afs.doc(email).get().toPromise().then(r => {
       return r.data() as User
