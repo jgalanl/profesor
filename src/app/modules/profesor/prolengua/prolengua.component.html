@@ -1,6 +1,7 @@
-<mat-toolbar color="purple" class="toolbar">
+<mat-toolbar class="toolbar">
   <span>Lengua castellana y Literatura - 4º</span>
 </mat-toolbar>
+
 <mat-nav-list>
   <mat-list-item *ngFor="let tema of asignatura.temas; index as i">
     <!-- <mat-icon mat-list-icon>subject</mat-icon>
@@ -27,7 +28,7 @@
       color="warn"
       class=""
       aria-label="Example icon button with a delete icon"
-      (click)="onDeleteTema(tema)"
+      (click)="onDeleteTema({titulo:tema})"
     >
       <mat-icon>delete</mat-icon>
     </button>

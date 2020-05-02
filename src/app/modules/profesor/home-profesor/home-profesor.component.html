@@ -19,7 +19,7 @@
       fixedTopGap="56"
       ><!------>
       <mat-nav-list id="menu">
-        <a mat-list-item routerLink="#" class="active_toolbar">
+        <a mat-list-item  disabled="disabled" class="active_toolbar">
           <p>{{ user.nombre }}</p>
           <p>&nbsp;-&nbsp;</p>
           <p>{{ user.rol }}</p></a
@@ -32,20 +32,21 @@
             src="../../../assets/profesor/archivo.png"
           />
         </a>
-        <a mat-list-item routerLink=".">
-          <p mat-line>Resultados</p>
-          <img
-            style="width: 30px; height: 30px;"
-            src="../../../assets/profesor/lista.png"
-          />
-        </a>
-        <a mat-list-item routerLink=".">
-          <p mat-line>Calendario</p>
+        <a mat-list-item routerLink="listaclases">
+          <p mat-line>Lista de Clases</p>
           <img
             style="width: 30px; height: 30px;"
             src="../../../assets/profesor/calendario.png"
           />
         </a>
+        <a mat-list-item routerLink="calificacion">
+          <p mat-line>Calificación</p>
+          <img
+            style="width: 30px; height: 30px;"
+            src="../../../assets/profesor/lista.png"
+          />
+        </a>
+
         <a mat-list-item routerLink=".">
           <p mat-line>Mensajes</p>
           <img
@@ -65,6 +66,13 @@
           <img
             style="width: 30px; height: 30px;"
             src="../../../assets/profesor/engranaje.png"
+          />
+        </a>
+        <a mat-list-item routerLink="/login">
+          <p mat-line>Salir</p>
+          <img
+            style="width: 30px; height: 30px;"
+            src="../../../assets/profesor/envelope.png"
           />
         </a>
       </mat-nav-list>

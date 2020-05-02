@@ -23,7 +23,7 @@ export class ProlenguaComponent implements OnInit {
       "Lengua"
     );
   }
-  onDeleteTema(datos: Tema) {
+  onDeleteTema(datos: Asignatura) {
     console.log(datos);
     Swal.fire({
       title: "¿Esta Seguro?",

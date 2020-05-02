@@ -25,7 +25,7 @@ import { MatListModule } from "@angular/material/list";
 import { MatGridListModule } from "@angular/material/grid-list";
 import { MatButtonModule } from "@angular/material/button";
 import { MatCardModule } from "@angular/material/card";
-
+import { MatTableModule } from "@angular/material";
 import { LogInComponent } from "./modules/log-in/log-in.component";
 import { HomeAlumnoComponent } from "./modules/alumno/home-alumno/home-alumno.component";
 import { HomeProfesorComponent } from "./modules/profesor/home-profesor/home-profesor.component";
@@ -42,6 +42,10 @@ import { ProlenguaComponent } from "./modules/profesor/prolengua/prolengua.compo
 import { ProtemaComponent } from "./modules/profesor/protema/protema.component";
 import { EditemaComponent } from "./modules/profesor/editema/editema.component";
 
+import { ResultadosComponent } from "./modules/alumno/resultados/resultados.component";
+import { ProejercicioComponent } from "./modules/profesor/proejercicio/proejercicio.component";
+import { CalificacionComponent } from "./modules/profesor/calificacion/calificacion.component";
+import { ListaclasesComponent } from "./modules/profesor/listaclases/listaclases.component";
 @NgModule({
   declarations: [
     AppComponent,
@@ -54,10 +58,14 @@ import { EditemaComponent } from "./modules/profesor/editema/editema.component";
     TemaComponent,
     EjercicioComponent,
     DialogOverviewExampleDialog,
+    ResultadosComponent,
     ProasignaturaComponent,
     ProlenguaComponent,
     ProtemaComponent,
     EditemaComponent,
+    ProejercicioComponent,
+    CalificacionComponent,
+    ListaclasesComponent,
   ],
   imports: [
     BrowserModule,
@@ -77,6 +85,7 @@ import { EditemaComponent } from "./modules/profesor/editema/editema.component";
     MatGridListModule,
     MatButtonModule,
     MatCardModule,
+    MatTableModule,
   ],
   entryComponents: [DialogOverviewExampleDialog],
   providers: [],

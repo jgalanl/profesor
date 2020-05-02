@@ -4,9 +4,13 @@ import { Pregunta } from 'src/app/data/pregunta';
 import { Opcion } from 'src/app/data/opcion';
 import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
 import { Router } from '@angular/router';
+import { Location } from '@angular/common';
 
 export interface DialogData {
-  puntos: number;
+  puntos: number
+  aciertos: number
+  fallos: number
+  preguntasFalladas: Array<Pregunta>
 }
 
 @Component({
@@ -16,14 +20,19 @@ export interface DialogData {
 })
 export class EjercicioComponent implements OnInit {
   preguntas: Array<any>
+  preguntasFalladas: Array<Pregunta>
   preguntaActual: Pregunta
   correct: Boolean
   puntos: number = 0
   tiempo: number = 60
   interval
+  aciertos: number = 0
+  fallos: number = 0
 
-  constructor(private router: Router, private asignaturasService: AsignaturasService,
-     public dialog: MatDialog) { }
+  constructor(private router: Router, private location: Location, 
+    private asignaturasService: AsignaturasService, public dialog: MatDialog) { 
+       this.preguntasFalladas = new Array<Pregunta>()
+     }
 
   ngOnInit() {
     this.getPreguntas()
@@ -52,6 +61,7 @@ export class EjercicioComponent implements OnInit {
     if(opcion.correcta){
       this.correct = true
       this.puntos = this.puntos + 10
+      this.aciertos = this.aciertos + 1
       let timeout = setTimeout(() => {
         this.correct = undefined  
         clearTimeout(timeout)
@@ -59,6 +69,10 @@ export class EjercicioComponent implements OnInit {
     }
     else{
       this.correct = false
+      this.fallos = this.fallos + 1
+      opcion.seleccionada = true
+      // this.preguntaActual.opciones[opcion.opcionId].seleccionada = true
+      this.preguntasFalladas.push(this.preguntaActual)
       let timeout = setInterval(() => {
         this.correct = undefined  
         clearTimeout(timeout)
@@ -76,13 +90,21 @@ export class EjercicioComponent implements OnInit {
 
   openDialog(){
     const dialogRef = this.dialog.open(DialogOverviewExampleDialog, {
-      width: '250px',
-      data: {puntos: this.puntos}
+      // width: '250px',
+      data: {puntos: this.puntos, preguntasFalladas: this.preguntasFalladas,
+            aciertos: this.aciertos, fallos: this.fallos}
     });
 
     dialogRef.afterClosed().subscribe(result => {
-      console.log(result)
-      //Si se reinicia volver a obtener preguntas
+      if(result == 0){
+        this.location.back()
+      }
+      else if(result == 1){
+
+      }
+      else{
+        this.router.navigate(["home-alumno/resultados"])
+      }
     });
   }
 }
@@ -94,16 +116,19 @@ export class EjercicioComponent implements OnInit {
 export class DialogOverviewExampleDialog {
 
   constructor(
-    public dialogRef: MatDialogRef<DialogOverviewExampleDialog>, private router: Router,
-    @Inject(MAT_DIALOG_DATA) public data: DialogData) {}
+    public dialogRef: MatDialogRef<DialogOverviewExampleDialog>, 
+     @Inject(MAT_DIALOG_DATA) public data: DialogData) {}
 
-  onNoClick(): void {
-    this.dialogRef.close();
+  onVolver(): void {
+    this.dialogRef.close(0);
   }
 
   onRepetir(): void {
-    this.dialogRef.close()
+    this.dialogRef.close(1)
+  }
 
+  onResultados(): void {
+    this.dialogRef.close(2)
   }
 
 }

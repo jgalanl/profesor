@@ -44,6 +44,7 @@ export class LogInComponent implements OnInit {
           .getUserByEmail(this.loginForm.get("email").value)
           .then((res) => {
             if (res.rol === "Profesor") {
+              //alert(JSON.stringify(res))
               this.router.navigate(["/home-profesor"], { state: res });
             } else {
               this.router.navigate(["/home-alumno"], { state: res });

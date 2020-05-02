@@ -1,8 +1,9 @@
-import { Asignatura } from './asignatura'
+import { Asignatura } from "./asignatura";
 
 export class User {
-    nombre: string
-    email:string
-    rol: string
-    asignaturas: Array<Asignatura>
+  nombre: string;
+  rol: string;
+   email: string;
+  nivel: string;
+  asignaturas: Array<Asignatura>;
 }

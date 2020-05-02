@@ -13,7 +13,6 @@ import { resolve } from "url";
 })
 export class AsignaturasService {
   private afs: AngularFirestoreCollection<Asignatura>;
-  private tem: AngularFirestoreCollection<Tema>;
 
   constructor(private firestore: AngularFirestore) {
     this.afs = this.firestore.collection<Asignatura>("Asignaturas");
@@ -59,10 +58,10 @@ export class AsignaturasService {
     });
   }
 
-  public deleteTemasByAsignatura(tema: Tema): Promise<Tema> {
+  public deleteTemasByAsignatura(tema: Asignatura): Promise<boolean> {
     return new Promise((resolve, reject) => {
       try {
-        this.tem.doc(tema.titulo).delete();
+        // this.afs.doc(tema.temas).collection.delete();
         return true;
       } catch (error) {
         reject(false);
