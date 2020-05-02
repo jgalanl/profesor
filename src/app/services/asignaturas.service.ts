@@ -67,5 +67,23 @@ export class AsignaturasService {
         reject(false);
       }
     });
+  public async getTema(asignatura: string, tema: string): Promise<Tema> {
+    return this.afs.doc(asignatura).collection("Tema-"+tema).doc("Tema-"+tema).get().toPromise().then(r => {
+      return r.data() as Tema
+    })
+  }
+
+ public async getPreguntas(asignatura: string, tema: string, ejercicio: string): Promise<Pregunta[]>{
+   return new Promise<Pregunta[]>((resolve, reject) => {
+     this.firestore.collection<any>('Asignaturas/'+asignatura+'/Tema-'+tema+'/Tema-'+tema+'/Ejercicios/', ref => 
+     ref.where('nivel', '==', ejercicio)).valueChanges().subscribe(data => {
+       if(data){
+        resolve(data as Pregunta[])
+       }
+       else{
+         reject()
+       }
+      })
+    })
   }
 }

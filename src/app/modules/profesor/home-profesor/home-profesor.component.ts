@@ -28,7 +28,7 @@ export class HomeProfesorComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit() {
-    console.log(history.state);
+    // console.log(history.state);
     this.user.email = history.state.email;
     this.user.nombre = history.state.nombre;
     this.user.rol = history.state.rol;

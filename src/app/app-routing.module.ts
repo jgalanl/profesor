@@ -31,6 +31,16 @@ const routes: Routes = [
       { path: "lengua/tema/:id", component: TemaComponent },
       { path: "lengua/tema/:id/ejercicio/:id", component: EjercicioComponent },
       { path: "resultados", component: ResultadosComponent },
+      { path: "asignaturas/:asignatura", component: LenguaComponent },
+      {
+        path: "asignaturas/:asignatura/tema/:idTema",
+        component: TemaComponent,
+      },
+      {
+        path: "asignaturas/:asignatura/tema/:idTema/ejercicio/:idEjercicio",
+        component: EjercicioComponent,
+      },
+      { path: "resultados", component: ResultadosComponent },
     ],
   },
   {

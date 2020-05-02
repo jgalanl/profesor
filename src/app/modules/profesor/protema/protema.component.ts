@@ -19,8 +19,8 @@ export class ProtemaComponent implements OnInit {
     this.getTema();
   }
   async getTema() {
-    this.tema = await this.asignaturasService.getTema();
-    console.log(this.tema);
+    // this.tema = await this.asignaturasService.getTema();
+    // console.log(this.tema);
   }
 
   goToEjercicios() {
