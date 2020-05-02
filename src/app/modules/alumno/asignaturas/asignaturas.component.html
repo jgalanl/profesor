@@ -1,6 +1,5 @@
 <h1 class="mat-display-1">¡Bienvenido!</h1>
 <h2 class="mat-h2">Selecciona una asignatura para comenzar.</h2>
-<!-- <mat-grid-list cols="2" rowHeight="1:1"> -->
 <mat-grid-list cols="2" [rowHeight]="breakpoint" (window:resize)="onResize($event)">
   <mat-grid-tile style="background-color:#883f80" routerLink="asignaturas/Lengua">
     Lengua castellana

@@ -18,5 +18,19 @@ export class ResultadosService {
     return this.afs.doc(data.id).set({... data}).then(r=>{return data.id;  });
   }
 
+  public async getResultadosByAsignatura(usuario: string, asignatura: string): Promise<Resultado[]>{
+    return new Promise<Resultado[]>((resolve, reject) => {
+      this.firestore.collection<any>('Resultados', ref => 
+      ref.where('usuario', '==', usuario).where('asignatura', '==', asignatura)).valueChanges().subscribe(data => {
+        if(data){
+         resolve(data as Resultado[])
+        }
+        else{
+          reject()
+        }
+       })
+     })
+   }
+
 
 }

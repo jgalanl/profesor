@@ -47,6 +47,7 @@ import { ResultadosComponent } from "./modules/alumno/resultados/resultados.comp
 import { ProejercicioComponent } from "./modules/profesor/proejercicio/proejercicio.component";
 import { CalificacionComponent } from "./modules/profesor/calificacion/calificacion.component";
 import { ListaclasesComponent } from "./modules/profesor/listaclases/listaclases.component";
+import { ResultadosAsignaturaComponent } from './modules/alumno/resultados-asignatura/resultados-asignatura.component';
 
 @NgModule({
   declarations: [
@@ -69,6 +70,7 @@ import { ListaclasesComponent } from "./modules/profesor/listaclases/listaclases
     ProejercicioComponent,
     CalificacionComponent,
     ListaclasesComponent,
+    ResultadosAsignaturaComponent,
   ],
   imports: [
     BrowserModule,
