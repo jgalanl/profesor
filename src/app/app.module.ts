@@ -26,6 +26,8 @@ import { MatGridListModule } from "@angular/material/grid-list";
 import { MatButtonModule } from "@angular/material/button";
 import { MatCardModule } from "@angular/material/card";
 import { MatTableModule } from "@angular/material";
+import { MatPaginatorModule } from '@angular/material';
+import { MatSortModule } from '@angular/material'
 
 import { LogInComponent, LoginDialog } from "./modules/log-in/log-in.component";
 import { HomeAlumnoComponent } from "./modules/alumno/home-alumno/home-alumno.component";
@@ -48,6 +50,7 @@ import { ProejercicioComponent } from "./modules/profesor/proejercicio/proejerci
 import { CalificacionComponent } from "./modules/profesor/calificacion/calificacion.component";
 import { ListaclasesComponent } from "./modules/profesor/listaclases/listaclases.component";
 import { ResultadosAsignaturaComponent } from './modules/alumno/resultados-asignatura/resultados-asignatura.component';
+import { RecompensasComponent } from './modules/alumno/recompensas/recompensas.component';
 
 @NgModule({
   declarations: [
@@ -71,6 +74,7 @@ import { ResultadosAsignaturaComponent } from './modules/alumno/resultados-asign
     CalificacionComponent,
     ListaclasesComponent,
     ResultadosAsignaturaComponent,
+    RecompensasComponent
   ],
   imports: [
     BrowserModule,
@@ -91,6 +95,13 @@ import { ResultadosAsignaturaComponent } from './modules/alumno/resultados-asign
     MatButtonModule,
     MatCardModule,
     MatTableModule,
+    MatPaginatorModule,
+    MatSortModule
+  ],
+  exports : [
+    MatTableModule,
+    MatPaginatorModule,
+    MatSortModule
   ],
   entryComponents: [DialogOverviewExampleDialog, LoginDialog],
   providers: [],
