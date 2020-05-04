@@ -64,4 +64,12 @@ export class UsuariosService {
       puntos_actuales: firestore.FieldValue.increment(puntos),
     });
   }
+
+  public async updateRecompensa(email: string, puntos: number, recompensa: string, cartas: number) {
+    return this.afs.doc(email).update({
+      puntos_actuales: firestore.FieldValue.increment(-puntos),
+      [recompensa]: firestore.FieldValue.increment(cartas)
+    });
+  }
+
 }

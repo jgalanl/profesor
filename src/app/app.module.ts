@@ -28,6 +28,7 @@ import { MatCardModule } from "@angular/material/card";
 import { MatTableModule } from "@angular/material";
 import { MatPaginatorModule } from '@angular/material';
 import { MatSortModule } from '@angular/material'
+import {MatSliderModule} from '@angular/material/slider'; 
 
 import { LogInComponent, LoginDialog } from "./modules/log-in/log-in.component";
 import { HomeAlumnoComponent } from "./modules/alumno/home-alumno/home-alumno.component";
@@ -51,6 +52,7 @@ import { CalificacionComponent } from "./modules/profesor/calificacion/calificac
 import { ListaclasesComponent } from "./modules/profesor/listaclases/listaclases.component";
 import { ResultadosAsignaturaComponent } from './modules/alumno/resultados-asignatura/resultados-asignatura.component';
 import { RecompensasComponent } from './modules/alumno/recompensas/recompensas.component';
+import { FloorPipe } from './modules/alumno/recompensas/recompensas.component'
 
 @NgModule({
   declarations: [
@@ -74,7 +76,8 @@ import { RecompensasComponent } from './modules/alumno/recompensas/recompensas.c
     CalificacionComponent,
     ListaclasesComponent,
     ResultadosAsignaturaComponent,
-    RecompensasComponent
+    RecompensasComponent,
+    FloorPipe
   ],
   imports: [
     BrowserModule,
@@ -96,7 +99,8 @@ import { RecompensasComponent } from './modules/alumno/recompensas/recompensas.c
     MatCardModule,
     MatTableModule,
     MatPaginatorModule,
-    MatSortModule
+    MatSortModule,
+    MatSliderModule
   ],
   exports : [
     MatTableModule,

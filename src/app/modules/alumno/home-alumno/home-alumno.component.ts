@@ -15,7 +15,7 @@ export class HomeAlumnoComponent implements OnInit, OnDestroy {
 
   mobileQuery: MediaQueryList;
   private user: User
-  public s_user:Subscription;
+  public s_user: Subscription;
   private _mobileQueryListener: () => void;
 
   constructor(private router: Router, private us: UsuariosService, changeDetectorRef: ChangeDetectorRef, 

@@ -6,7 +6,6 @@ import {
 import { Asignatura } from "../data/asignatura";
 import { Tema } from "../data/tema";
 import { Pregunta } from "../data/pregunta";
-import { resolve } from "url";
 
 @Injectable({
   providedIn: "root",
