@@ -1,23 +1,16 @@
 <div class="container" [class.is-mobile]="mobileQuery.matches">
   <mat-toolbar class="toolbar">
     <button mat-icon-button (click)="snav.toggle()">
-      <mat-icon class="tamanio">menu</mat-icon>
+      <mat-icon >menu</mat-icon>
     </button>
     <div class="logo">
       <img src="../../../assets/login1.png" />
     </div>
   </mat-toolbar>
 
-  <mat-sidenav-container
-    class="sidenav-container"
-    [style.marginTop.px]="mobileQuery.matches ? 56 : 0"
-    ><!----->
-    <mat-sidenav
-      #snav
-      [mode]="mobileQuery.matches ? 'over' : 'over'"
-      [fixedInViewport]="mobileQuery.matches"
-      fixedTopGap="56"
-      ><!------>
+  <mat-sidenav-container class="sidenav-container">
+    <mat-sidenav #snav [mode]="mobileQuery.matches ? 'over' : 'over'" [fixedInViewport]="mobileQuery.matches"
+      fixedTopGap="56">
       <mat-nav-list id="menu">
         <a mat-list-item routerLink="#" class="active_toolbar">
           <p>{{ user.nombre }}</p>
@@ -30,62 +23,28 @@
 
         <a mat-list-item routerLink=".">
           <p mat-line>Asignaturas</p>
-          <img
-            style="width: 30px; height: 30px;"
-            src="../../../assets/profesor/archivo.png"
-          />
+          <img style="width: 30px; height: 30px;" src="../../../assets/profesor/archivo.png" />
         </a>
         <a mat-list-item routerLink="resultados">
           <p mat-line>Resultados</p>
-          <img
-            style="width: 30px; height: 30px;"
-            src="../../../assets/profesor/lista.png"
-          />
+          <img style="width: 30px; height: 30px;" src="../../../assets/profesor/lista.png" />
         </a>
         <a mat-list-item routerLink=".">
           <p mat-line>Calendario</p>
-          <img
-            style="width: 30px; height: 30px;"
-            src="../../../assets/profesor/calendario.png"
-          />
+          <img style="width: 30px; height: 30px;" src="../../../assets/profesor/calendario.png" />
         </a>
         <a mat-list-item routerLink=".">
           <p mat-line>Mensajes</p>
-          <img
-            style="width: 30px; height: 30px;"
-            src="../../../assets/profesor/envelope.png"
-          />
+          <img style="width: 30px; height: 30px;" src="../../../assets/profesor/envelope.png" />
         </a>
         <a mat-list-item routerLink=".">
           <p mat-line>Ayuda</p>
-          <img
-            style="width: 30px; height: 30px;"
-            src="../../../assets/profesor/signo.png"
-          />
+          <img style="width: 30px; height: 30px;" src="../../../assets/profesor/signo.png" />
         </a>
         <a mat-list-item routerLink=".">
           <p mat-line>Configuración</p>
-          <img
-            style="width: 30px; height: 30px;"
-            src="../../../assets/profesor/engranaje.png"
-          />
+          <img style="width: 30px; height: 30px;" src="../../../assets/profesor/engranaje.png" />
         </a>
-        <!--a mat-list-item routerLink="." >Asignaturas <mat-icon>book</mat-icon></a>
-        <a mat-list-item routerLink="."
-          >Resultados <mat-icon>equalizer</mat-icon></a
-        >
-        <a mat-list-item routerLink="."
-          >Calendario <mat-icon>calendar_today</mat-icon></a
-        >
-        <a mat-list-item routerLink="."
-          >Mensajes <mat-icon>message</mat-icon></a
-        >
-        <a mat-list-item routerLink="."
-          >Ayuda <mat-icon>help_outline</mat-icon></a
-        >
-        <a mat-list-item routerLink="."
-          >Confiración <mat-icon>settings</mat-icon></a
-        -->
       </mat-nav-list>
     </mat-sidenav>
     <mat-sidenav-content>

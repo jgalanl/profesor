@@ -18,43 +18,29 @@ export class LogInComponent implements OnInit {
 
   loginForm = new FormGroup({
     email: new FormControl("", [Validators.required, Validators.email]),
-    password: new FormControl("", [
-      Validators.required,
-      Validators.minLength(5),
+    password: new FormControl("", [Validators.required, Validators.minLength(5),
     ]),
   });
 
-  constructor(
-    private dialog: MatDialog,
-    private router: Router,
-    private auth: AuthService,
-    private us: UsuariosService
-  ) {}
+  constructor(private dialog: MatDialog, private router: Router, private auth: AuthService, 
+    private usuariosService: UsuariosService) {}
 
   ngOnInit() {}
 
   onSubmit() {
     this.auth
-      .login(
-        this.loginForm.get("email").value,
-        this.loginForm.get("password").value
-      )
-      .then((res) => {
-        this.us
-          .getUserByEmail(this.loginForm.get("email").value)
-          .then((res) => {
-            if (res.rol === "Profesor") {
-              //alert(JSON.stringify(res))
-              this.router.navigate(["/home-profesor"], { state: res });
-            } else {
-              this.router.navigate(["/home-alumno"], { state: res });
-            }
-          });
-      })
-      .catch((err) => {
+      .login(this.loginForm.get("email").value, this.loginForm.get("password").value).then((res) => {
+        this.usuariosService.getUserByEmail(this.loginForm.get("email").value).then((res) => {
+          if (res.rol === "Profesor") {
+            this.router.navigate(["/home-profesor"], { state: res });
+          } else {
+            this.router.navigate(["/home-alumno"], { state: res });
+          }
+        });
+      }).catch((err) => {
         this.openDialog()
       });
-  }
+    }
 
   openDialog(){
     this.dialog.open(LoginDialog, {

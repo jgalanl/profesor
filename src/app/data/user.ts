@@ -7,5 +7,4 @@ export class User {
     puntos_totales: number
     puntos_actuales: number
     nivel: string
-    asignaturas: Array<Asignatura>
 }
