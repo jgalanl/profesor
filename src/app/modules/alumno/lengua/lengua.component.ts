@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Asignatura } from 'src/app/data/asignatura';
 import { AsignaturasService } from 'src/app/services/asignaturas.service';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-lengua',
@@ -10,15 +11,15 @@ import { AsignaturasService } from 'src/app/services/asignaturas.service';
 export class LenguaComponent implements OnInit {
   asignatura: Asignatura
 
-  constructor(private asignaturasService: AsignaturasService) { }
+  constructor(private route: ActivatedRoute, private asignaturasService: AsignaturasService) { }
 
   ngOnInit() {
     this.asignatura = new Asignatura()
-    this.getTemas()
+    this.getTemas(this.route.snapshot.paramMap.get('asignatura'))
   }
 
-  async getTemas(){
-    this.asignatura = await this.asignaturasService.getTemasByAsignatura("Lengua")
+  async getTemas(asignatura: string){
+    this.asignatura = await this.asignaturasService.getTemasByAsignatura(asignatura)
   }
 
 }

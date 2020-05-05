@@ -12,7 +12,13 @@ import { ProasignaturaComponent } from "./modules/profesor/proasignatura/proasig
 import { ProlenguaComponent } from "./modules/profesor/prolengua/prolengua.component";
 import { ProtemaComponent } from "./modules/profesor/protema/protema.component";
 import { EditemaComponent } from "./modules/profesor/editema/editema.component";
-
+import { ResultadosComponent } from "./modules/alumno/resultados/resultados.component";
+import { ProejercicioComponent } from "./modules/profesor/proejercicio/proejercicio.component";
+import { CalificacionComponent } from "./modules/profesor/calificacion/calificacion.component";
+import { ListaclasesComponent } from "./modules/profesor/listaclases/listaclases.component";
+import { ResultadosAsignaturaComponent } from "./modules/alumno/resultados-asignatura/resultados-asignatura.component";
+import { RecompensasComponent } from "./modules/alumno/recompensas/recompensas.component";
+import { ModalComponent } from "./modules/profesor/modal/modal.component";
 const routes: Routes = [
   { path: "", pathMatch: "full", redirectTo: "/splash" },
   { path: "splash", component: SplashComponent, data: { animation: "Splash" } },
@@ -24,8 +30,22 @@ const routes: Routes = [
       { path: "", component: AsignaturasComponent },
       { path: "asignaturas", component: AsignaturasComponent },
       { path: "lengua", component: LenguaComponent },
-      { path: "lengua/tema/:id", component: TemaComponent },
-      { path: "lengua/tema/:id/ejercicio/:id", component: EjercicioComponent },
+      { path: "resultados", component: ResultadosComponent },
+      { path: "asignaturas/:asignatura", component: LenguaComponent },
+      {
+        path: "asignaturas/:asignatura/tema/:idTema",
+        component: TemaComponent,
+      },
+      {
+        path: "asignaturas/:asignatura/tema/:idTema/ejercicio/:idEjercicio",
+        component: EjercicioComponent,
+      },
+      { path: "resultados", component: ResultadosComponent },
+      {
+        path: "resultados/:asignatura",
+        component: ResultadosAsignaturaComponent,
+      },
+      { path: "recompensas", component: RecompensasComponent },
     ],
   },
   {
@@ -37,6 +57,13 @@ const routes: Routes = [
       { path: "prolengua", component: ProlenguaComponent },
       { path: "prolengua/protema/:id", component: ProtemaComponent },
       { path: "prolengua/editema/:id", component: EditemaComponent },
+      {
+        path: "prolengua/protema/:id/proejercicio/:id",
+        component: ProejercicioComponent,
+      },
+      { path: "calificacion", component: CalificacionComponent },
+      { path: "listaclases", component: ListaclasesComponent },
+      { path: "modal", component: ModalComponent },
     ],
   },
 ];

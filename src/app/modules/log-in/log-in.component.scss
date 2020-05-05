@@ -3,7 +3,6 @@
   width: 100%;
   display: flex;
   justify-content: center;
-  margin-top: 8%;
   // background-image: url('../../../assets/background.jpg');
 }
 
@@ -50,7 +49,11 @@
 /*////////////////////////////cambiosss*/
 
 .img_buho{
-  margin-top:7% !important;
+  position: absolute;
+  left: 50%;
+  top: 30%;
+  -webkit-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
 }
 
 input{
@@ -71,6 +74,13 @@ input placeholder{
   display:block !important;
   text-align:center;
   padding-right:0px !important;
+
+  position: absolute;
+  left: 50%;
+  top: 57%;
+  -webkit-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+
 }
 button{
   height: 40px !important;

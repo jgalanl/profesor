@@ -3,10 +3,18 @@ import { AsignaturasService } from 'src/app/services/asignaturas.service';
 import { Pregunta } from 'src/app/data/pregunta';
 import { Opcion } from 'src/app/data/opcion';
 import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
+import { Location } from '@angular/common';
+import { AuthService } from 'src/app/services/auth.service';
+import { ResultadosService } from 'src/app/services/resultados.service';
+import { Resultado } from 'src/app/data/resultado';
+import { UsuariosService } from 'src/app/services/usuarios.service';
 
 export interface DialogData {
-  puntos: number;
+  puntos: number
+  aciertos: number
+  fallos: number
+  preguntasFalladas: Array<Pregunta>
 }
 
 @Component({
@@ -16,23 +24,33 @@ export interface DialogData {
 })
 export class EjercicioComponent implements OnInit {
   preguntas: Array<any>
+  preguntasFalladas: Array<Pregunta>
   preguntaActual: Pregunta
   correct: Boolean
   puntos: number = 0
   tiempo: number = 60
   interval
+  aciertos: number = 0
+  fallos: number = 0
 
-  constructor(private router: Router, private asignaturasService: AsignaturasService,
-     public dialog: MatDialog) { }
+  constructor(private auth:AuthService, private resultadoServie: ResultadosService,
+     private router: Router, private location: Location, private route: ActivatedRoute,
+     private asignaturasService: AsignaturasService, public dialog: MatDialog, private usr: UsuariosService) { 
+       this.preguntasFalladas = new Array<Pregunta>()
+     }
 
   ngOnInit() {
-    this.getPreguntas()
+    this.getPreguntas(this.route.snapshot.paramMap.get('asignatura'), this.route.snapshot.paramMap.get('idTema'), 
+    this.route.snapshot.paramMap.get('idEjercicio'))
   }
 
-  async getPreguntas(){
-    this.preguntas = await this.asignaturasService.getPreguntas()
+  ngOnDestroy() {
+    clearInterval(this.interval)
+  }
+
+  async getPreguntas(asignatura: string, tema: string, ejercicio: string){
+    this.preguntas = await this.asignaturasService.getPreguntas(asignatura, tema, ejercicio)
     this.preguntaActual = this.preguntas.pop()
-    console.log(this.preguntaActual)
     this.start()
   }
 
@@ -40,7 +58,6 @@ export class EjercicioComponent implements OnInit {
     this.interval = setInterval(() => {
       this.tiempo = this.tiempo - 1
       if(this.tiempo == 0){
-        console.log("Se acabo el tiempo!")
         clearInterval(this.interval)
         this.openDialog()
       }
@@ -52,6 +69,7 @@ export class EjercicioComponent implements OnInit {
     if(opcion.correcta){
       this.correct = true
       this.puntos = this.puntos + 10
+      this.aciertos = this.aciertos + 1
       let timeout = setTimeout(() => {
         this.correct = undefined  
         clearTimeout(timeout)
@@ -59,6 +77,9 @@ export class EjercicioComponent implements OnInit {
     }
     else{
       this.correct = false
+      this.fallos = this.fallos + 1
+      opcion.seleccionada = true
+      this.preguntasFalladas.push(this.preguntaActual)
       let timeout = setInterval(() => {
         this.correct = undefined  
         clearTimeout(timeout)
@@ -68,21 +89,42 @@ export class EjercicioComponent implements OnInit {
       this.preguntaActual = this.preguntas.pop()
     }
     else {
-      console.log("Has contestado a todas las preguntas!")
       clearInterval(this.interval)
       this.openDialog()
+      // Almacenar resultados del test
+      let resultado: Resultado = {
+        usuario: this.auth.user.email,
+        aciertos: this.aciertos,
+        fallos: this.fallos,
+        puntos: this.puntos,
+        asignatura: this.route.snapshot.paramMap.get('asignatura'),
+        tema: this.route.snapshot.paramMap.get('idTema'),
+        ejercicio: this.route.snapshot.paramMap.get('idEjercicio'),
+        fecha: new Date().toDateString()
+      }
+      this.resultadoServie.insertResultado(resultado)
+      //Actualizar puntos actuales y totales
+      this.usr.updatePuntos(this.auth.user.email, this.puntos)
     }
   }
 
   openDialog(){
     const dialogRef = this.dialog.open(DialogOverviewExampleDialog, {
-      width: '250px',
-      data: {puntos: this.puntos}
+      // width: '250px',
+      data: {puntos: this.puntos, preguntasFalladas: this.preguntasFalladas,
+            aciertos: this.aciertos, fallos: this.fallos}
     });
 
     dialogRef.afterClosed().subscribe(result => {
-      console.log(result)
-      //Si se reinicia volver a obtener preguntas
+      if(result == 0){
+        this.location.back()
+      }
+      else if(result == 1){
+
+      }
+      else{
+        this.router.navigate(["home-alumno/resultados"])
+      }
     });
   }
 }
@@ -94,16 +136,18 @@ export class EjercicioComponent implements OnInit {
 export class DialogOverviewExampleDialog {
 
   constructor(
-    public dialogRef: MatDialogRef<DialogOverviewExampleDialog>, private router: Router,
-    @Inject(MAT_DIALOG_DATA) public data: DialogData) {}
+    public dialogRef: MatDialogRef<DialogOverviewExampleDialog>, 
+     @Inject(MAT_DIALOG_DATA) public data: DialogData) {}
 
-  onNoClick(): void {
-    this.dialogRef.close();
+  onVolver(): void {
+    this.dialogRef.close(0);
   }
 
   onRepetir(): void {
-    this.dialogRef.close()
-
+    this.dialogRef.close(1)
   }
 
+  onResultados(): void {
+    this.dialogRef.close(2)
+  }
 }

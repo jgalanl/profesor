@@ -13,7 +13,6 @@ import { resolve } from "url";
 })
 export class AsignaturasService {
   private afs: AngularFirestoreCollection<Asignatura>;
-  private tem: AngularFirestoreCollection<Tema>;
 
   constructor(private firestore: AngularFirestore) {
     this.afs = this.firestore.collection<Asignatura>("Asignaturas");
@@ -29,11 +28,11 @@ export class AsignaturasService {
       });
   }
 
-  public async getTema(): Promise<Tema> {
+  public async getTema(asignatura: string, tema: string): Promise<Tema> {
     return this.afs
-      .doc("Lengua")
-      .collection("Tema-1")
-      .doc("Tema-1")
+      .doc(asignatura)
+      .collection("Tema-" + tema)
+      .doc("Tema-" + tema)
       .get()
       .toPromise()
       .then((r) => {
@@ -41,12 +40,22 @@ export class AsignaturasService {
       });
   }
 
-  public async getPreguntas(): Promise<Pregunta[]> {
+  public async getPreguntas(
+    asignatura: string,
+    tema: string,
+    ejercicio: string
+  ): Promise<Pregunta[]> {
     return new Promise<Pregunta[]>((resolve, reject) => {
       this.firestore
         .collection<any>(
-          "Asignaturas/Lengua/Tema-1/Tema-1/Ejercicios/",
-          (ref) => ref.where("nivel", "==", "fácil")
+          "Asignaturas/" +
+            asignatura +
+            "/Tema-" +
+            tema +
+            "/Tema-" +
+            tema +
+            "/Ejercicios/",
+          (ref) => ref.where("nivel", "==", ejercicio)
         )
         .valueChanges()
         .subscribe((data) => {
@@ -58,15 +67,37 @@ export class AsignaturasService {
         });
     });
   }
+  public editartemas() {}
 
-  public deleteTemasByAsignatura(tema: Tema): Promise<Tema> {
+  public async savetema(post: Tema): Promise<boolean> {
     return new Promise((resolve, reject) => {
       try {
-        this.tem.doc(tema.titulo).delete();
-        return true;
+        this.afs.doc(post.titulo).set({
+          titulo: post.titulo,
+          contenido: post.contenido,
+          ejemplos: post.ejercicios,
+        });
+        resolve(true);
       } catch (error) {
         reject(false);
       }
     });
+  }
+
+  public async getTemapro(): Promise<Tema> {
+    return this.afs
+      .doc("Lengua")
+      .collection("Tema-1")
+      .doc("Tema-1")
+      .get()
+      .toPromise()
+      .then((r) => {
+        return r.data() as Tema;
+      });
+  }
+  deleteTemasByAsignatura(model) {
+    var pruebas = this.afs.doc("Lengua");
+    pruebas.update(model);
+    return pruebas.get();
   }
 }

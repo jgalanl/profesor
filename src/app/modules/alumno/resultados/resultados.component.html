@@ -1,0 +1,36 @@
+<mat-toolbar color="green" class="toolbar">
+    <span>Resultados</span>
+</mat-toolbar>
+
+<div class="resultados" *ngIf="usuario">
+    <h4 class="mat-display-1">Nivel: {{ usuario.nivel }} <span class="material-icons">emoji_events</span></h4> 
+    <h4 class="mat-display-1">Puntos actuales: {{ usuario.puntos_actuales }}</h4>
+    <h4 class="mat-display-1">Puntos totales: {{ usuario.puntos_totales }}</h4>
+</div>
+
+<button mat-button routerLink="/home-alumno/recompensas">Recompensas</button>
+
+<h4 class="mat-display-1">Por asignaturas:</h4>
+
+<mat-grid-list cols="2" [rowHeight]="breakpoint" (window:resize)="onResize($event)">
+    <mat-grid-tile style="background-color:#883f80" routerLink="Lengua">
+      Lengua castellana
+      <img src="../../../../assets/lengua.png">
+    </mat-grid-tile>
+    <mat-grid-tile style="background-color: red;">
+      Matematicas
+    <img src="../../../../assets/mates.png">
+    </mat-grid-tile>
+    <mat-grid-tile style="background-color: #66ccff;">
+      Química
+      <img src="../../../../assets/quimica.png">
+    </mat-grid-tile>
+    <mat-grid-tile style="background-color: #ff9933;">
+      Historia
+      <img src="../../../../assets/historia.png">
+    </mat-grid-tile>
+    <mat-grid-tile style="background-color: #6666ff;">
+      Tecnología
+      <img src="../../../../assets/tecnologia.png">
+    </mat-grid-tile>
+  </mat-grid-list>

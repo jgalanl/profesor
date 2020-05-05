@@ -1,6 +1,7 @@
-<mat-toolbar color="purple" class="toolbar">
+<mat-toolbar class="toolbar">
   <span>Lengua castellana y Literatura - 4º</span>
 </mat-toolbar>
+
 <mat-nav-list>
   <mat-list-item *ngFor="let tema of asignatura.temas; index as i">
     <!-- <mat-icon mat-list-icon>subject</mat-icon>
@@ -8,7 +9,7 @@
     <div mat-line routerLink="protema/{{ i + 1 }}">
       <img
         style="width: 42px; height: 38px; float: left; margin-right: 6px;"
-        src="https://images.freeimages.com/images/large-previews/e71/frog-1371919.jpg"
+        src="https://images.freeimages.com/images/large-previews/fe9/book-on-the-sea-1467655.jpg"
       />
       {{ tema }}
       <div mat-line>Tema {{ i + 1 }}</div>
@@ -27,9 +28,20 @@
       color="warn"
       class=""
       aria-label="Example icon button with a delete icon"
-      (click)="onDeleteTema(tema)"
+      (click)="onDeleteTema(i)"
     >
       <mat-icon>delete</mat-icon>
     </button>
   </mat-list-item>
 </mat-nav-list>
+
+<div mat-line class="example-button">
+  <button
+    mat-fab
+    style="margin-right: 25px; background: #c8f098;"
+    aria-label="Example icon button with a delete icon"
+    (click)="onAddTema()"
+  >
+    <mat-icon>add</mat-icon>
+  </button>
+</div>

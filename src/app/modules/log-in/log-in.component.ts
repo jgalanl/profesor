@@ -5,7 +5,7 @@ import { AuthService } from "src/app/services/auth.service";
 import { UsuariosService } from "src/app/services/usuarios.service";
 import { Subscription } from "rxjs";
 import { User } from "src/app/data/user";
-import { MatDialog } from "@angular/material/dialog";
+import { MatDialog, MatDialogRef } from "@angular/material/dialog";
 
 @Component({
   selector: "app-log-in",
@@ -44,6 +44,7 @@ export class LogInComponent implements OnInit {
           .getUserByEmail(this.loginForm.get("email").value)
           .then((res) => {
             if (res.rol === "Profesor") {
+              //alert(JSON.stringify(res))
               this.router.navigate(["/home-profesor"], { state: res });
             } else {
               this.router.navigate(["/home-alumno"], { state: res });
@@ -51,8 +52,27 @@ export class LogInComponent implements OnInit {
           });
       })
       .catch((err) => {
-        //TODO. Incluir dialog
-        window.alert("Usuario o contraseña incorrectos");
+        this.openDialog()
       });
+  }
+
+  openDialog(){
+    this.dialog.open(LoginDialog, {
+      data: {}
+    });
+  }
+}
+
+@Component({
+  selector: 'log-in-dialog',
+  templateUrl: 'log-in-dialog.html',
+})
+export class LoginDialog {
+
+  constructor(
+    public dialogRef: MatDialogRef<LoginDialog>) {}
+
+  onVolver(): void {
+    this.dialogRef.close();
   }
 }

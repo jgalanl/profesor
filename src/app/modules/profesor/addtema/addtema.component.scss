@@ -1,0 +1,41 @@
+.new-post-container {
+  display: flex;
+  flex-direction: column;
+  form {
+    margin-bottom: 20px;
+    input [type="file"] {
+      display: none;
+    }
+    input.mat-flat-button {
+      width: 100%;
+      background: #a17aaa;
+      &:hover {
+        background: rgb(106, 185, 126);
+      }
+    }
+
+    .custom-file {
+      border: 1px solid #ccc;
+      display: inline-block;
+      padding: 6px;
+      cursor: pointer;
+      width: 100%;
+    }
+
+    .container-button {
+      min-height: 80px;
+    }
+
+    .container-input-file {
+      margin-top: 2rem 0;
+    }
+
+    mat-form-field {
+      width: 100%;
+    }
+
+    .container-button {
+      min-height: 80px;
+    }
+  }
+}

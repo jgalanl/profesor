@@ -1,0 +1,41 @@
+<mat-toolbar color="green" class="toolbar">
+    <span>Resultados</span>
+</mat-toolbar>
+
+<table mat-table [dataSource]="dataSource" matSort class="mat-elevation-z8">
+  <ng-container matColumnDef="tema">
+    <th mat-header-cell *matHeaderCellDef mat-sort-header> Tema </th>
+    <td mat-cell *matCellDef="let element"> {{element.tema}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="ejercicio">
+    <th mat-header-cell *matHeaderCellDef mat-sort-header> Ejercicio </th>
+    <td mat-cell *matCellDef="let element"> {{element.ejercicio}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="aciertos">
+    <th mat-header-cell *matHeaderCellDef mat-sort-header> Aciertos </th>
+    <td mat-cell *matCellDef="let element"> {{element.aciertos}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="fallos">
+    <th mat-header-cell *matHeaderCellDef mat-sort-header> Fallos </th>
+    <td mat-cell *matCellDef="let element"> {{element.fallos}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="puntos">
+    <th mat-header-cell *matHeaderCellDef mat-sort-header> Puntos </th>
+    <td mat-cell *matCellDef="let element"> {{element.puntos}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="fecha">
+    <th mat-header-cell *matHeaderCellDef mat-sort-header> Fecha </th>
+    <td mat-cell *matCellDef="let element"> {{element.fecha}} </td>
+  </ng-container>
+
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+
+</table>
+
+<mat-paginator [pageSize]="5" [pageSizeOptions]="[5, 10, 15]" showFirstLastButtons></mat-paginator>

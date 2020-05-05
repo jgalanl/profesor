@@ -19,10 +19,9 @@ export class ProtemaComponent implements OnInit {
     this.getTema();
   }
   async getTema() {
-    this.tema = await this.asignaturasService.getTema();
+    this.tema = await this.asignaturasService.getTemapro();
     console.log(this.tema);
   }
-
   goToEjercicios() {
     this.router.navigate([this.router.url + "/ejercicios"]);
   }
