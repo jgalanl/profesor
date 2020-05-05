@@ -8,6 +8,7 @@
 
     <hr class="hr_class" />
 
+<<<<<<< HEAD
     <h4 class="mat-display-1" style="font-size: 28px;">
       {{ tema.contenido }}
     </h4>
@@ -34,3 +35,16 @@
     </mat-list-item>
   </mat-nav-list>
 </div>
+=======
+<h4 class="mat-display-1">Ejercicios:</h4>
+<mat-nav-list>
+  <mat-list-item
+    *ngFor="let ejercicio of tema.ejercicios"
+    routerLink="proejercicio/{{ ejercicio.id }}"
+  >
+    <mat-icon mat-list-icon>subject</mat-icon>
+    <div mat-line>Ejercicio {{ ejercicio.id }}</div>
+    <div mat-line>Nivel: {{ ejercicio.nivel }}</div>
+  </mat-list-item>
+</mat-nav-list>
+>>>>>>> 2eda6b93d612a9443ed1a41a2c86b339f27f0988

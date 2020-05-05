@@ -2,21 +2,10 @@
   <div class="formulario">
     <img class="img_buho" src="../../../assets/login.png" />
     <div class="formGroup">
-      <form [formGroup]="loginForm" (ngSubmit)="onSubmit()" autocomplete="off">
-        <input
-          type="email"
-          formControlName="email"
-          placeholder="Correo"
-          required
-        />
+      <form [formGroup]="loginForm" (ngSubmit)="onSubmit()" autocomplete="on">
+        <input type="email" formControlName="email" placeholder="Correo" required />
         <br>
-        <input
-          type="password"
-          formControlName="password"
-          placeholder="Contraseña"
-          required
-        />
-
+        <input type="password" formControlName="password" placeholder="Contraseña" required />
         <button type="submit" [disabled]="!loginForm.valid">
           Iniciar sesión
         </button>

@@ -1,5 +1,6 @@
 <mat-toolbar>
   <mat-toolbar-row>
+<<<<<<< HEAD
     <span style="font-size: 28px; text-transform: uppercase;"
       >Calificaciones</span
     >
@@ -12,11 +13,24 @@
     [dataSource]="dataSource"
     class="mat-elevation-z8"
     style="width: 100%;"
+=======
+    <span style="font-size: 28px;text-transform: uppercase;">Calificaciones</span>
+  </mat-toolbar-row>
+</mat-toolbar>
+
+<div fxLayout="row" class="tabla_borde" fxLayoutAlign="center">
+  <table
+    mat-table
+    [dataSource]="dataSource"
+    matSort
+    width="100%"
+>>>>>>> 2eda6b93d612a9443ed1a41a2c86b339f27f0988
   >
     <!-- Nombre -->
     <ng-container matColumnDef="nombre">
       <th mat-header-cell *matHeaderCellDef>Nombre</th>
       <td mat-cell *matCellDef="let element">
+<<<<<<< HEAD
         <img
           class="img_table"
           src="../../../assets/male.png"
@@ -25,37 +39,55 @@
         <div class="nombre_table" *ngIf="element.rol == 'Alumno'">
           {{ element.nombre }}
         </div>
+=======
+        <img class="img_table" src="../../../assets/male.png"/> 
+        <div class="nombre_table">{{ element.nombre }}</div>
+>>>>>>> 2eda6b93d612a9443ed1a41a2c86b339f27f0988
       </td>
     </ng-container>
     <!-- Nivel -->
     <ng-container matColumnDef="nivel">
       <th mat-header-cell *matHeaderCellDef mat-mat-sort-header>Nivel</th>
+<<<<<<< HEAD
       <td mat-cell *matCellDef="let element">
         <div>{{ element.nivel }}</div>
       </td>
+=======
+      <td mat-cell *matCellDef="let element">{{ element.nivel }}</td>
+>>>>>>> 2eda6b93d612a9443ed1a41a2c86b339f27f0988
     </ng-container>
 
     <!-- Puntos Actuales -->
     <ng-container matColumnDef="puntos_actuales">
       <th mat-header-cell *matHeaderCellDef mat-mat-sort-header>Puntos</th>
+<<<<<<< HEAD
       <td mat-cell *matCellDef="let element">
         <div>{{ element.puntos_actuales }}</div>
       </td>
+=======
+      <td mat-cell *matCellDef="let element">{{ element.puntos_actuales }}</td>
+>>>>>>> 2eda6b93d612a9443ed1a41a2c86b339f27f0988
     </ng-container>
 
     <!-- Puntos Finales -->
     <ng-container matColumnDef="puntos_finales">
+<<<<<<< HEAD
       <th mat-header-cell *matHeaderCellDef mat-mat-sort-header>
         Calificación
       </th>
       <td mat-cell *matCellDef="let element">
         <div>{{ element.puntos_totales }}</div>
       </td>
+=======
+      <th mat-header-cell *matHeaderCellDef mat-mat-sort-header>Calificación</th>
+      <td mat-cell *matCellDef="let element">{{ element.puntos_totales }}</td>
+>>>>>>> 2eda6b93d612a9443ed1a41a2c86b339f27f0988
     </ng-container>
     <!-- Botones -->
     <ng-container matColumnDef="editar">
       <th mat-header-cell *matHeaderCellDef></th>
       <td mat-cell *matCellDef="let element">
+<<<<<<< HEAD
         <button
           mat-mini-fab
           class="color_verde"
@@ -71,6 +103,12 @@
           routerLink="."
           *ngIf="element.rol == 'Alumno'"
         >
+=======
+        <button mat-mini-fab class="color_verde" routerLink="." style="margin-right: 2px;">
+          <mat-icon>edit</mat-icon>
+        </button>
+        <button mat-mini-fab class="color_rojo" routerLink=".">
+>>>>>>> 2eda6b93d612a9443ed1a41a2c86b339f27f0988
           <mat-icon>delete</mat-icon>
         </button>
       </td>

@@ -2,10 +2,75 @@
     <span>Recompensas</span>
 </mat-toolbar>
 
+<<<<<<< HEAD
 <p>
     Puntos actuales: {{ usuario.puntos_actuales}}
 </p>
 
 <div>
+=======
+<div *ngIf="user">
+    <p>Puntos actuales: {{ user.puntos_actuales }}</p>
+
+    <div class="recompensa">
+        <img src="../../../../assets/trono.png">
+        <div class="info">
+            <p>Tienes: {{ user.recompensa_trono }}</p>
+            <mat-slider
+                class="example-margin"
+                disabled="false"
+                invert="false"
+                max="{{ user.puntos_actuales / 10 | floor }}"
+                min="0"
+                step="1"
+                thumbLabel="true"
+                [(ngModel)]="cartas_trono"
+                vertical="false">
+        </mat-slider>
+        <button mat-button (click)="onComprar('recompensa_trono')">Comprar</button>
+        <button mat-button (click)="onUsar('recompensa_trono')">Usar</button>
+        </div>
+    </div>
+
+    <div class="recompensa">
+        <img src="../../../../assets/pocion.png">
+        <div class="info">
+            <p>Tienes: {{ user.recompensa_pocion }}</p>
+            <mat-slider
+                class="example-margin"
+                disabled="false"
+                invert="false"
+                max="{{ user.puntos_actuales / 10 | floor }}"
+                min="0"
+                step="1"
+                thumbLabel="true"
+                [(ngModel)]="cartas_pocion"
+                vertical="false">
+        </mat-slider>
+        <button mat-button (click)="onComprar('recompensa_pocion')">Comprar</button>
+        <button mat-button (click)="onUsar('recompensa_pocion')">Usar</button>
+        </div>   
+    </div>
+
+    <div class="recompensa">
+        <img src="../../../../assets/esmeralda.png">
+        <div class="info">
+            <p>Tienes: {{ user.recompensa_esmeralda }}</p>
+            <mat-slider
+                class="example-margin"
+                disabled="false"
+                invert="false"
+                max="{{ user.puntos_actuales / 25 | floor }}"
+                min="0"
+                step="1"
+                thumbLabel="true"
+                [(ngModel)]="cartas_esmeralda"
+                vertical="false">
+        </mat-slider>
+        <button mat-button (click)="onComprar('recompensa_esmeralda')">Comprar</button>
+        <button mat-button (click)="onUsar('recompensa_esmeralda')">Usar</button>
+        </div>
+    </div>
+>>>>>>> 2eda6b93d612a9443ed1a41a2c86b339f27f0988
 
 </div>

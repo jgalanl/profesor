@@ -6,12 +6,16 @@
   // background-image: url('../../../assets/background.jpg');
 }
 
+.formulario {
+  margin-top: 1%;
+}
+
 .formulario img {
   height: auto;
   display: block;
   margin-left: auto;
   margin-right: auto;
-  width: 25%;
+  width: 19em;
 }
 
 .formGroup {
@@ -23,7 +27,7 @@
 
 .formGroup input {
   color: white;
-  background-color: white;
+  background-color:#628737;
   height: 50%;
   border-radius: 10px;
   box-sizing: border-box;
@@ -46,6 +50,7 @@
   cursor: auto;
 }
 
+<<<<<<< HEAD
 /*////////////////////////////cambiosss*/
 
 .img_buho{
@@ -86,4 +91,8 @@ button{
   height: 40px !important;
     width: 300px !important;
     font-size: 16px !important;
+=======
+::placeholder{
+  color: white;
+>>>>>>> 2eda6b93d612a9443ed1a41a2c86b339f27f0988
 }

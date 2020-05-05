@@ -110,7 +110,6 @@ export class EjercicioComponent implements OnInit {
 
   openDialog(){
     const dialogRef = this.dialog.open(DialogOverviewExampleDialog, {
-      // width: '250px',
       data: {puntos: this.puntos, preguntasFalladas: this.preguntasFalladas,
             aciertos: this.aciertos, fallos: this.fallos}
     });

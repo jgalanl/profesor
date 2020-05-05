@@ -21,8 +21,13 @@ export class UsuariosService {
     this.asignatura = this.firestore.collection<Asignatura>("Asignaturas");
   }
 
+<<<<<<< HEAD
   public getUser(email: string): Observable<any> {
     return this.afs.doc(email).valueChanges();
+=======
+  public getUser(email:string):Observable<any> {
+    return this.afs.doc(email).valueChanges()
+>>>>>>> 2eda6b93d612a9443ed1a41a2c86b339f27f0988
   }
 
   public async getUserByEmail(email: string): Promise<User> {
@@ -43,6 +48,7 @@ export class UsuariosService {
       .then((r) => {
         return r.data() as Asignatura[];
       });
+<<<<<<< HEAD
   }
 
   public getAllDatos(): Observable<User[]> {
@@ -63,5 +69,35 @@ export class UsuariosService {
       puntos_totales: firestore.FieldValue.increment(puntos),
       puntos_actuales: firestore.FieldValue.increment(puntos),
     });
+=======
   }
+
+  public getAllDatos(): Observable<User[]> {
+    return this.afs.snapshotChanges().pipe(
+      map((actions) =>
+        actions.map((a) => {
+          const data = a.payload.doc.data() as User;
+          const id = a.payload.doc.id;
+          console.log({ id, ...data });
+          return { id, ...data };
+        })
+      )
+    );
+>>>>>>> 2eda6b93d612a9443ed1a41a2c86b339f27f0988
+  }
+
+  public async updatePuntos(email: string, puntos: number) {
+    return this.afs.doc(email).update({
+      puntos_totales: firestore.FieldValue.increment(puntos),
+      puntos_actuales: firestore.FieldValue.increment(puntos),
+    });
+  }
+
+  public async updateRecompensa(email: string, puntos: number, recompensa: string, cartas: number) {
+    return this.afs.doc(email).update({
+      puntos_actuales: firestore.FieldValue.increment(-puntos),
+      [recompensa]: firestore.FieldValue.increment(cartas)
+    });
+  }
+
 }

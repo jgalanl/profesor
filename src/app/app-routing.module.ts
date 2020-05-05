@@ -16,9 +16,15 @@ import { ResultadosComponent } from "./modules/alumno/resultados/resultados.comp
 import { ProejercicioComponent } from "./modules/profesor/proejercicio/proejercicio.component";
 import { CalificacionComponent } from "./modules/profesor/calificacion/calificacion.component";
 import { ListaclasesComponent } from "./modules/profesor/listaclases/listaclases.component";
+<<<<<<< HEAD
 import { ResultadosAsignaturaComponent } from "./modules/alumno/resultados-asignatura/resultados-asignatura.component";
 import { RecompensasComponent } from "./modules/alumno/recompensas/recompensas.component";
 import { ModalComponent } from "./modules/profesor/modal/modal.component";
+=======
+import { ResultadosAsignaturaComponent } from './modules/alumno/resultados-asignatura/resultados-asignatura.component';
+import { RecompensasComponent } from './modules/alumno/recompensas/recompensas.component';
+
+>>>>>>> 2eda6b93d612a9443ed1a41a2c86b339f27f0988
 const routes: Routes = [
   { path: "", pathMatch: "full", redirectTo: "/splash" },
   { path: "splash", component: SplashComponent, data: { animation: "Splash" } },
@@ -32,6 +38,7 @@ const routes: Routes = [
       { path: "lengua", component: LenguaComponent },
       { path: "resultados", component: ResultadosComponent },
       { path: "asignaturas/:asignatura", component: LenguaComponent },
+<<<<<<< HEAD
       {
         path: "asignaturas/:asignatura/tema/:idTema",
         component: TemaComponent,
@@ -46,6 +53,13 @@ const routes: Routes = [
         component: ResultadosAsignaturaComponent,
       },
       { path: "recompensas", component: RecompensasComponent },
+=======
+      { path: "asignaturas/:asignatura/tema/:idTema", component: TemaComponent },
+      { path: "asignaturas/:asignatura/tema/:idTema/ejercicio/:idEjercicio", component: EjercicioComponent },
+      { path: "resultados", component: ResultadosComponent },
+      { path: "resultados/:asignatura", component: ResultadosAsignaturaComponent},
+      { path: "recompensas", component: RecompensasComponent}
+>>>>>>> 2eda6b93d612a9443ed1a41a2c86b339f27f0988
     ],
   },
   {
@@ -63,7 +77,10 @@ const routes: Routes = [
       },
       { path: "calificacion", component: CalificacionComponent },
       { path: "listaclases", component: ListaclasesComponent },
+<<<<<<< HEAD
       { path: "modal", component: ModalComponent },
+=======
+>>>>>>> 2eda6b93d612a9443ed1a41a2c86b339f27f0988
     ],
   },
 ];

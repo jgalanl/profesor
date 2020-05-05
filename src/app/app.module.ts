@@ -28,6 +28,7 @@ import { MatCardModule } from "@angular/material/card";
 import { MatTableModule } from "@angular/material";
 import { MatPaginatorModule } from "@angular/material";
 import { MatSortModule } from "@angular/material";
+import { MatSliderModule } from "@angular/material/slider";
 
 import { LogInComponent, LoginDialog } from "./modules/log-in/log-in.component";
 import { HomeAlumnoComponent } from "./modules/alumno/home-alumno/home-alumno.component";
@@ -49,10 +50,12 @@ import { ResultadosComponent } from "./modules/alumno/resultados/resultados.comp
 import { ProejercicioComponent } from "./modules/profesor/proejercicio/proejercicio.component";
 import { CalificacionComponent } from "./modules/profesor/calificacion/calificacion.component";
 import { ListaclasesComponent } from "./modules/profesor/listaclases/listaclases.component";
-import { ResultadosAsignaturaComponent } from "./modules/alumno/resultados-asignatura/resultados-asignatura.component";
-import { RecompensasComponent } from "./modules/alumno/recompensas/recompensas.component";
 import { ModalComponent } from "./modules/profesor/modal/modal.component";
 import { AddtemaComponent } from "./modules/profesor/addtema/addtema.component";
+import { ResultadosAsignaturaComponent } from "./modules/alumno/resultados-asignatura/resultados-asignatura.component";
+import { RecompensasComponent } from "./modules/alumno/recompensas/recompensas.component";
+import { FloorPipe } from "./modules/alumno/recompensas/recompensas.component";
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -78,6 +81,7 @@ import { AddtemaComponent } from "./modules/profesor/addtema/addtema.component";
     RecompensasComponent,
     ModalComponent,
     AddtemaComponent,
+    FloorPipe,
   ],
   imports: [
     BrowserModule,
@@ -102,6 +106,7 @@ import { AddtemaComponent } from "./modules/profesor/addtema/addtema.component";
     MatSortModule,
     MatFormFieldModule,
     MatInputModule,
+    MatSliderModule,
   ],
   exports: [MatTableModule, MatPaginatorModule, MatSortModule],
   entryComponents: [DialogOverviewExampleDialog, LoginDialog, ModalComponent],
